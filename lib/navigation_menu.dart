@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+
 import 'feature/screens/home/home_screen.dart';
 import 'utils/constants/custom_colors.dart';
+import 'utils/constants/custom_sizes.dart';
 import 'utils/helper/helper_functions.dart';
 
 final selectedIndexProvider = StateProvider<int>((ref) => 0);
@@ -14,35 +18,33 @@ class NavigationMenu extends ConsumerStatefulWidget {
 }
 
 class _NavigationMenuState extends ConsumerState<NavigationMenu> {
-
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  final List<Widget> _screens = const [
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     final darkMode = HelperFunctions.isDarkMode(context);
     final selectedIndex = ref.watch(selectedIndexProvider);
-    Widget currentScreen() {
-      switch (selectedIndex) {
-        case 0:
-          return const HomeScreen();
-        case 1:
-          return const HomeScreen();
-        case 2:
-          return const HomeScreen();
-        default:
-          return const HomeScreen();
-      }
-    }
 
     return Scaffold(
-      body: currentScreen(),
-      bottomNavigationBar: BottomNavigationBar(
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        switchInCurve: Curves.easeIn,
+        switchOutCurve: Curves.easeOut,
+        transitionBuilder: (child, animation) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+        child: KeyedSubtree(
+          key: ValueKey<int>(selectedIndex),
+          child: _screens[selectedIndex],
+        ),
+      ),
+      bottomNavigationBar: SalomonBottomBar(
         currentIndex: selectedIndex,
-        type: BottomNavigationBarType.fixed,
         onTap: (index) {
           ref.read(selectedIndexProvider.notifier).state = index;
         },
@@ -50,25 +52,28 @@ class _NavigationMenuState extends ConsumerState<NavigationMenu> {
         selectedItemColor: CustomColors.primary,
         unselectedItemColor: Colors.grey,
         items: [
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+          SalomonBottomBarItem(
+            icon: const Icon(FontAwesomeIcons.house, size: Sizes.iconM),
+            title: const Text("Home"),
+            selectedColor: CustomColors.primary,
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
-            label: 'Map',
+          SalomonBottomBarItem(
+            icon: const Icon(FontAwesomeIcons.mapLocationDot, size: Sizes.iconM),
+            title: const Text("Map"),
+            selectedColor: CustomColors.primary,
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.cases_rounded),
-            label: 'Jobs',
+          SalomonBottomBarItem(
+            icon: const Icon(FontAwesomeIcons.briefcase, size: Sizes.iconM),
+            title: const Text("Jobs"),
+            selectedColor: CustomColors.primary,
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+          SalomonBottomBarItem(
+            icon: const Icon(FontAwesomeIcons.user, size: Sizes.iconM,),
+            title: const Text("Profile"),
+            selectedColor: CustomColors.primary,
           ),
         ],
       ),
     );
   }
 }
-         

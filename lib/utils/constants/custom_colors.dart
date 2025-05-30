@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomColors {
   CustomColors._();
   //App Basic Colors
-  static const Color primary = Color(0xFF004040);
+  static const Color primary = Color(0xFF00755e); //0xFF004040
   static const Color secondary = Color(0xFFFFE24B);
   static const Color accent = Color(0xFFb0c7ff);
   static const Color secondaryGreen = Color(0xFF00755e);
@@ -19,6 +19,15 @@ class CustomColors {
         Color(0xFF003366),
         // Color(0xFF11181C),
         Color(0xFF0f52ba),
+      ],
+  );
+
+  static const Gradient linearGradient2 = LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+    colors: [
+        Color(0xFFffe998),
+        Color(0xFF57370D),
       ],
   );
 

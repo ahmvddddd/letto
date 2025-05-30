@@ -77,7 +77,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircularContainer(
+                      CustomContainer(
                         width: screenWidth * 0.90,
                         height: screenHeight * 0.70,
                         radius: Sizes.cardRadiusLg,
