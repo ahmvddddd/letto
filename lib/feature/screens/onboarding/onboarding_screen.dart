@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import '../../../navigation_menu.dart';
 import '../../../utils/constants/custom_colors.dart';
+import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/constants/images.dart';
+import '../../../utils/helper/helper_functions.dart';
+import '../../custom_widgets/containers/custom_container.dart';
 
 // Riverpod state provider for current index
 final currentIndexProvider = StateProvider<int>((ref) => 0);
@@ -20,26 +23,22 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final List<Map<String, String>> _pages = [
     {
       'image': Images.onboarding1,
-      'text': 'Find beautiful apartments near you'
+      'text': 'The best of apartments in your location',
     },
-    {
-      'image': Images.onboarding2,
-      'text': 'Rent fully furnished homes hassle-free'
-    },
-    {
-      'image': Images.onboarding3,
-      'text': 'Secure and affordable rentals anytime'
-    },
+    {'image': Images.onboarding2, 'text': 'Luxiriously furnished interior'},
+    {'image': Images.onboarding3, 'text': 'Enjoy the comfort you deserve'},
   ];
 
   void _nextPage() {
     final currentIndex = ref.read(currentIndexProvider);
     if (currentIndex < _pages.length - 1) {
-      _pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+      _pageController.nextPage(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
       ref.read(currentIndexProvider.notifier).state++;
     } else {
-      // Done - go to home or login screen
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Onboarding Complete!')));
+      HelperFunctions.navigateScreen(context, NavigationMenu());
     }
   }
 
@@ -60,6 +59,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(currentIndexProvider);
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SafeArea(
@@ -69,12 +70,29 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: _pages.length,
-                onPageChanged: (index) => ref.read(currentIndexProvider.notifier).state = index,
+                onPageChanged:
+                    (index) =>
+                        ref.read(currentIndexProvider.notifier).state = index,
                 itemBuilder: (context, index) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.network(_pages[index]['image']!, height: 300, fit: BoxFit.cover),
+                      CircularContainer(
+                        width: screenWidth * 0.90,
+                        height: screenHeight * 0.70,
+                        radius: Sizes.cardRadiusLg,
+                        backgroundColor: Colors.transparent,
+                        child: ClipRRect(
+                          borderRadius: BorderRadiusGeometry.circular(
+                            Sizes.cardRadiusLg,
+                          ),
+                          child: Image.asset(
+                            _pages[index]['image']!,
+                            height: 300,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 24),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -90,7 +108,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24.0,
+                vertical: 24,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -102,8 +123,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   ),
                   TextButton(
                     onPressed: _nextPage,
-                    child: Text(currentIndex == _pages.length - 1 ? 'Finish' : 'Next',
-                    style: Theme.of(context).textTheme.labelMedium,),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(Sizes.xs),
+                      backgroundColor: CustomColors.primary,
+                    ),
+                    child: Text(
+                      currentIndex == _pages.length - 1 ? 'Finish' : 'Next',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelMedium!.copyWith(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
