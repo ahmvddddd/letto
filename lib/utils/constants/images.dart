@@ -1,7 +1,7 @@
 class Images {
 
   //avatar
-  static const String avatarM1 = "assets/avatar/m1.png";
+  static const String avatarM1 = "assets/avatar/m1.jpg";
 
   //onboarding images
   static const String onboarding1 = "assets/onboarding_images/onboarding_1.jpg";
