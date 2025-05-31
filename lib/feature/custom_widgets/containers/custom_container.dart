@@ -11,6 +11,8 @@ class CustomContainer extends StatelessWidget {
     this.padding = 0,
     this.margin,
     this.backgroundColor = CustomColors.primary,
+  this.showBorder = false,
+  this.borderColor = CustomColors.borderPrimary,
     this.boxShadow,
     this.gradient,
   });
@@ -22,6 +24,8 @@ class CustomContainer extends StatelessWidget {
   final EdgeInsets? margin;
   final Widget? child;
   final Color backgroundColor;
+  final bool showBorder;
+  final Color borderColor;
   final List<BoxShadow>? boxShadow;
   final Gradient? gradient;
 
@@ -34,6 +38,7 @@ class CustomContainer extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
+        border: showBorder ? Border.all(color: borderColor) : null,
         color: backgroundColor,
         boxShadow: boxShadow,
         gradient: gradient,

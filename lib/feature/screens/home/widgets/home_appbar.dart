@@ -26,10 +26,15 @@ class HomeAppBar extends StatelessWidget {
                       ? Colors.white.withValues(alpha: 0.2)
                       : Colors.black.withValues(alpha: 0.2),
               padding: Sizes.xs,
-              child: Image.asset(
-                Images.avatarM1,
-                fit: BoxFit.contain,
-                height: screenHeight * 0.40,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Center(
+                  child: Image.asset(
+                    Images.avatarM1,
+                    fit: BoxFit.contain,
+                    height: screenHeight * 0.06,
+                  ),
+                ),
               ),
             ),
 

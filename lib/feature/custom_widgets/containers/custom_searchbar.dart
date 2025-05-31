@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../../../utils/constants/custom_colors.dart';
+import '../../../utils/helper/helper_functions.dart';
+import 'custom_container.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
@@ -17,22 +16,24 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        border: Border.all(color: CustomColors.primary),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: TextField(
-        controller: controller,
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          prefixIcon: const Icon(FontAwesomeIcons.searchengin, color: CustomColors.primary),
-          hintText: 'Search',
-          suffixIcon: IconButton(
-            icon: const Icon(FontAwesomeIcons.filter, color: CustomColors.primary),
-            onPressed: onFilterPressed,
+    final dark = HelperFunctions.isDarkMode(context);
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    return CustomContainer(
+      width: screenWidth * 0.85,
+      height: screenHeight * 0.06,
+      padding: 0.5,
+      backgroundColor: Colors.transparent,
+      showBorder: true,
+      borderColor: dark ? Colors.white.withValues(alpha: 0.3) : Colors.black.withValues(alpha: 0.3),
+      radius: 50,
+      child: Center(
+        child: TextField(
+          controller: controller,
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            prefixIcon: Icon(Icons.search, color: dark ? Colors.white.withValues(alpha: 0.5) : Colors.black.withValues(alpha: 0.5)),
           ),
         ),
       ),

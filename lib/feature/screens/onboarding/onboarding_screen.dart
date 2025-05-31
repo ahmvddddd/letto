@@ -5,7 +5,6 @@ import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/helper/helper_functions.dart';
-import '../../custom_widgets/containers/custom_container.dart';
 
 // Riverpod state provider for current index
 final currentIndexProvider = StateProvider<int>((ref) => 0);
@@ -62,82 +61,91 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: _pages.length,
-                onPageChanged:
-                    (index) =>
-                        ref.read(currentIndexProvider.notifier).state = index,
-                itemBuilder: (context, index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomContainer(
-                        width: screenWidth * 0.90,
-                        height: screenHeight * 0.70,
-                        radius: Sizes.cardRadiusLg,
-                        backgroundColor: Colors.transparent,
-                        child: ClipRRect(
-                          borderRadius: BorderRadiusGeometry.circular(
-                            Sizes.cardRadiusLg,
-                          ),
-                          child: Image.asset(
-                            _pages[index]['image']!,
-                            height: 300,
-                            fit: BoxFit.cover,
+    return SafeArea(
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: _pages.length,
+                  onPageChanged:
+                      (index) =>
+                          ref.read(currentIndexProvider.notifier).state = index,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: screenWidth,
+                            height: screenHeight * 0.50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(Sizes.xl),
+                                bottomRight: Radius.circular(Sizes.xl),
+                              )
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadiusGeometry.only(
+                                bottomLeft: Radius.circular(Sizes.xl),
+                                bottomRight: Radius.circular(Sizes.xl),
+                              ),
+                              child: Image.asset(
+                                _pages[index]['image']!,
+                                height: screenHeight * 0.50,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 24),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Text(
-                          _pages[index]['text']!,
-                          style: Theme.of(context).textTheme.bodySmall,
-                          textAlign: TextAlign.center,
+                        SizedBox(height: Sizes.spaceBtwItems),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
+                          child: Text(
+                            _pages[index]['text']!,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                  vertical: 24,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: List.generate(
+                        _pages.length,
+                        (index) => _buildIndicator(index, currentIndex),
                       ),
-                    ],
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24.0,
-                vertical: 24,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: List.generate(
-                      _pages.length,
-                      (index) => _buildIndicator(index, currentIndex),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: _nextPage,
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.all(Sizes.xs),
-                      backgroundColor: CustomColors.primary,
+                    TextButton(
+                      onPressed: _nextPage,
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.all(Sizes.xs),
+                        backgroundColor: CustomColors.primary,
+                      ),
+                      child: Text(
+                        currentIndex == _pages.length - 1 ? 'Finish' : 'Next',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.labelMedium!.copyWith(color: Colors.white),
+                      ),
                     ),
-                    child: Text(
-                      currentIndex == _pages.length - 1 ? 'Finish' : 'Next',
-                      style: Theme.of(
-                        context,
-                      ).textTheme.labelMedium!.copyWith(color: Colors.white),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

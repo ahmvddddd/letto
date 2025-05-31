@@ -5,6 +5,7 @@ import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_searchbar.dart';
 import 'widgets/home_appbar.dart';
+import 'widgets/home_categories.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,6 +46,9 @@ class HomeScreen extends StatelessWidget {
                   controller: searchController,
                   onFilterPressed: () {},
                 ),
+
+                const SizedBox(height: Sizes.spaceBtwItems),
+                const HomeCategories(),
 
                 const SizedBox(height: Sizes.spaceBtwItems),
                 Container(
