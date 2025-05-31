@@ -61,92 +61,98 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return SafeArea(
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: _pages.length,
-                  onPageChanged:
-                      (index) =>
-                          ref.read(currentIndexProvider.notifier).state = index,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            width: screenWidth,
-                            height: screenHeight * 0.50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(Sizes.xl),
-                                bottomRight: Radius.circular(Sizes.xl),
-                              )
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadiusGeometry.only(
-                                bottomLeft: Radius.circular(Sizes.xl),
-                                bottomRight: Radius.circular(Sizes.xl),
-                              ),
-                              child: Image.asset(
-                                _pages[index]['image']!,
-                                height: screenHeight * 0.50,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: Sizes.spaceBtwItems),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
-                          child: Text(
-                            _pages[index]['text']!,
-                            style: Theme.of(context).textTheme.bodySmall,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24.0,
-                  vertical: 24,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+              controller: _pageController,
+              itemCount: _pages.length,
+              onPageChanged:
+                  (index) =>
+                      ref.read(currentIndexProvider.notifier).state = index,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: List.generate(
-                        _pages.length,
-                        (index) => _buildIndicator(index, currentIndex),
+                    Container(
+                      width: screenWidth,
+                      height: screenHeight * 0.70,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(Sizes.xl),
+                          bottomRight: Radius.circular(Sizes.xl),
+                        )
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadiusGeometry.only(
+                          bottomLeft: Radius.circular(Sizes.xl),
+                          bottomRight: Radius.circular(Sizes.xl),
+                        ),
+                        child: Image.asset(
+                          _pages[index]['image']!,
+                          height: screenHeight * 0.70,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                    TextButton(
-                      onPressed: _nextPage,
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.all(Sizes.xs),
-                        backgroundColor: CustomColors.primary,
-                      ),
-                      child: Text(
-                        currentIndex == _pages.length - 1 ? 'Finish' : 'Next',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelMedium!.copyWith(color: Colors.white),
+                    SizedBox(height: Sizes.spaceBtwItems),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _pages[index]['text']!,
+                            style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: CustomColors.primary),
+                            textAlign: TextAlign.center,
+                          ),
+      
+                          const SizedBox(height: Sizes.sm),
+                          SizedBox(width: screenWidth * 0.80,
+                          child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+                          softWrap: true,
+                          maxLines: 3,),)
+                        ],
                       ),
                     ),
                   ],
-                ),
-              ),
-            ],
+                );
+              },
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 24,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: List.generate(
+                    _pages.length,
+                    (index) => _buildIndicator(index, currentIndex),
+                  ),
+                ),
+                TextButton(
+                  onPressed: _nextPage,
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(Sizes.xs),
+                    backgroundColor: CustomColors.primary,
+                  ),
+                  child: Text(
+                    currentIndex == _pages.length - 1 ? 'Finish' : 'Next',
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelMedium!.copyWith(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import 'feature/screens/home/home_screen.dart';
@@ -50,15 +51,15 @@ class _NavigationMenuState extends ConsumerState<NavigationMenu> {
         },
         backgroundColor: darkMode ? CustomColors.dark : Colors.white,
         selectedItemColor: CustomColors.primary,
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: darkMode ? Colors.white : Colors.black,
         items: [
           SalomonBottomBarItem(
-            icon: const Icon(FontAwesomeIcons.house, size: Sizes.iconM),
+            icon: const Icon(Iconsax.home, size: Sizes.iconM),
             title: const Text("Home"),
             selectedColor: CustomColors.primary,
           ),
           SalomonBottomBarItem(
-            icon: const Icon(FontAwesomeIcons.mapLocationDot, size: Sizes.iconM),
+            icon: const Icon(Iconsax.map, size: Sizes.iconM),
             title: const Text("Map"),
             selectedColor: CustomColors.primary,
           ),
@@ -68,7 +69,7 @@ class _NavigationMenuState extends ConsumerState<NavigationMenu> {
             selectedColor: CustomColors.primary,
           ),
           SalomonBottomBarItem(
-            icon: const Icon(FontAwesomeIcons.user, size: Sizes.iconM,),
+            icon: const Icon(Iconsax.user, size: Sizes.iconM,),
             title: const Text("Profile"),
             selectedColor: CustomColors.primary,
           ),

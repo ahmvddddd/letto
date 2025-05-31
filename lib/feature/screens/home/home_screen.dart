@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
@@ -42,12 +41,14 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(Sizes.spaceBtwItems),
             child: Column(
               children: [
+
+                const SizedBox(height: Sizes.spaceBtwItems),
                 CustomSearchBar(
                   controller: searchController,
                   onFilterPressed: () {},
                 ),
 
-                const SizedBox(height: Sizes.spaceBtwItems),
+                const SizedBox(height: Sizes.spaceBtwSections),
                 const HomeCategories(),
 
                 const SizedBox(height: Sizes.spaceBtwItems),
