@@ -47,7 +47,10 @@ class HomeCategories extends StatelessWidget {
             children: [
               CircleAvatar(backgroundImage: AssetImage(backgroundImage[index])),
               const SizedBox(width: Sizes.xs),
-              Text(categories[index], style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 10)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
+                child: Text(categories[index], style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 10)),
+              ),
             ],
           ),
         );

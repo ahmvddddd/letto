@@ -4,6 +4,7 @@ import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_searchbar.dart';
 import 'widgets/home_appbar.dart';
+import 'widgets/house_card.dart';
 import 'widgets/home_categories.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -41,7 +42,6 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(Sizes.spaceBtwItems),
             child: Column(
               children: [
-
                 const SizedBox(height: Sizes.spaceBtwItems),
                 CustomSearchBar(
                   controller: searchController,
@@ -50,6 +50,9 @@ class HomeScreen extends StatelessWidget {
 
                 const SizedBox(height: Sizes.spaceBtwSections),
                 const HomeCategories(),
+
+                const SizedBox(height: Sizes.spaceBtwSections),
+                const HouseCard(),
 
                 const SizedBox(height: Sizes.spaceBtwItems),
                 Container(

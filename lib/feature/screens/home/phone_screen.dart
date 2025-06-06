@@ -11,6 +11,7 @@ class PhoneScreenState extends State<PhoneScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -99,7 +100,7 @@ class PhoneScreenState extends State<PhoneScreen>
                                 );
                               }),
                             ),
-                            SizedBox(height: 44), // Space for status bar
+                            SizedBox(height: 44), // Space for bottom nav
                           ],
                         );
                       },
@@ -107,6 +108,7 @@ class PhoneScreenState extends State<PhoneScreen>
                   ),
                 ),
 
+                // Floating Bottom Navigation Bar
                 AnimatedPositioned(
                   duration: Duration(milliseconds: 200),
                   curve: Curves.easeInOut,
@@ -115,80 +117,50 @@ class PhoneScreenState extends State<PhoneScreen>
                   right: 0,
                   child: Container(
                     margin: EdgeInsets.all(12),
-                    height: 60,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(200),
                       color: Colors.black,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(Icons.home, color: Colors.white, size: 24),
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey.withValues(alpha: 0.5),
-                          ),
-                          padding: EdgeInsets.all(8),
-                          child: Icon(
-                            Icons.favorite,
-                            color: Colors.white,
-                            size: 24,
-                          ),
-                        ),
-                        Icon(
-                          Icons.notifications,
-                          color: Colors.white,
-                          size: 24,
-                        ),
-                        Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 24,
+                      borderRadius: BorderRadius.circular(200),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10,
+                          offset: Offset(0, 4),
                         ),
                       ],
                     ),
-                  ),
-                ),
-
-                // Status Bar
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    height: 44,
-                    color: Colors.black,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(
-                            '17:46',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(200),
+                      child: BottomNavigationBar(
+                        backgroundColor: Colors.black,
+                        selectedItemColor: Colors.white,
+                        unselectedItemColor: Colors.white54,
+                        type: BottomNavigationBarType.fixed,
+                        currentIndex: _selectedIndex,
+                        onTap: (index) {
+                          setState(() {
+                            _selectedIndex = index;
+                          });
+                          // Handle tab change here if needed
+                        },
+                        items: const [
+                          BottomNavigationBarItem(
+                            icon: Icon(Icons.home),
+                            label: '',
                           ),
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.signal_cellular_alt,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            Icon(Icons.wifi, color: Colors.white, size: 20),
-                            Icon(
-                              Icons.battery_full,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ],
-                        ),
-                      ],
+                          BottomNavigationBarItem(
+                            icon: Icon(Icons.favorite),
+                            label: '',
+                          ),
+                          BottomNavigationBarItem(
+                            icon: Icon(Icons.notifications),
+                            label: '',
+                          ),
+                          BottomNavigationBarItem(
+                            icon: Icon(Icons.person),
+                            label: '',
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
