@@ -3,6 +3,7 @@ import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_searchbar.dart';
+import '../../custom_widgets/layout/custom_list_view.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/house_card.dart';
 import 'widgets/home_categories.dart';
@@ -53,6 +54,19 @@ class HomeScreen extends StatelessWidget {
 
                 const SizedBox(height: Sizes.spaceBtwSections),
                 const HouseCard(),
+
+                const SizedBox(height: Sizes.spaceBtwSections),
+                CustomListView(
+                  scrollDirection: Axis.vertical,
+                  scrollPhysics: NeverScrollableScrollPhysics(),
+                  seperatorBuilder: (context, index) {
+                    return  SizedBox(height: Sizes.spaceBtwItems);
+                  },
+                  itemCount: 4,
+                  itemBuilder: (context, index) { 
+                    return HouseCard();
+                    },
+                ),
 
                 const SizedBox(height: Sizes.spaceBtwItems),
                 Container(
