@@ -47,8 +47,8 @@ class HouseCard extends StatelessWidget {
                         radius: 50,
                         backgroundColor:
                             dark
-                                ? Colors.black.withValues(alpha: 0.5)
-                              : Colors.white.withValues(alpha: 0.5),
+                                ? Colors.black
+                              : Colors.white,
                         child: Text(
                           'Top Listing',
                           style: Theme.of(context).textTheme.labelMedium!.copyWith(
@@ -61,8 +61,8 @@ class HouseCard extends StatelessWidget {
                         radius: 100,
                         backgroundColor:
                             dark
-                                ? Colors.black.withValues(alpha: 0.5)
-                              : Colors.white.withValues(alpha: 0.5),
+                                ? Colors.black.withValues(alpha: 0.8)
+                              : Colors.white.withValues(alpha: 0.8),
                         child: Icon(Icons.favorite,
                         color: dark ? Colors.white : Colors.black,),
                       ),

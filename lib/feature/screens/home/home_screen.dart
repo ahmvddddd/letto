@@ -53,9 +53,6 @@ class HomeScreen extends StatelessWidget {
                 const HomeCategories(),
 
                 const SizedBox(height: Sizes.spaceBtwSections),
-                const HouseCard(),
-
-                const SizedBox(height: Sizes.spaceBtwSections),
                 CustomListView(
                   scrollDirection: Axis.vertical,
                   scrollPhysics: NeverScrollableScrollPhysics(),
