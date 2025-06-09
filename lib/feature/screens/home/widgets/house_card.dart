@@ -72,6 +72,12 @@ class HouseCard extends StatelessWidget {
               ),
             ],
           ),
+
+          const SizedBox(height: Sizes.sm,),
+          Row(children: [
+            Text('Apartment A1',
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.bold),)
+          ],)
         ],
       ),
     );
