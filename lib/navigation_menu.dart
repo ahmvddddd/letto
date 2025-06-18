@@ -5,6 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import 'feature/screens/home/home_screen.dart';
+import 'feature/screens/map/map_screen.dart';
 import 'utils/constants/custom_colors.dart';
 import 'utils/constants/custom_sizes.dart';
 import 'utils/helper/helper_functions.dart';
@@ -21,7 +22,7 @@ class NavigationMenu extends ConsumerStatefulWidget {
 class _NavigationMenuState extends ConsumerState<NavigationMenu> {
   final List<Widget> _screens = const [
     HomeScreen(),
-    HomeScreen(),
+    MapScreen(),
     HomeScreen(),
     HomeScreen(),
   ];
