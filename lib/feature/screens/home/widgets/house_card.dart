@@ -1,96 +1,126 @@
 import 'package:flutter/material.dart';
+
 import '../../../../utils/constants/custom_sizes.dart';
-import '../../../../utils/constants/images.dart';
 import '../../../../utils/helper/helper_functions.dart';
 import '../../../custom_widgets/containers/custom_container.dart';
 
 class HouseCard extends StatelessWidget {
-  const HouseCard({super.key});
+  final String imageUrl;
+  final String title;
+  final String price;
+  final String address;
+  final int beds;
+  final int baths;
+  final String area;
+
+  const HouseCard({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+    required this.price,
+    required this.address,
+    required this.beds,
+    required this.baths,
+    required this.area,
+  });
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     final dark = HelperFunctions.isDarkMode(context);
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: dark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.1),
-      ),
-      child: CustomContainer(
-        width: screenWidth * 0.90,
-        radius: 30,
-        padding: Sizes.xs,
-        backgroundColor: Colors.transparent,
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
-                  child: Center(
-                    child: Image.asset(
-                      Images.apartment,
-                      height: screenHeight * 0.25,
-                      width: screenWidth * 0.90,
-                      fit: BoxFit.cover,
-                    ),
+
+    return CustomContainer(
+      radius: Sizes.md,
+      backgroundColor: dark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.1),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
+                child: Image.network(
+                  imageUrl,
+                  height: 140,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                top: 10,
+                left: 10,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    "Apartment",
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                 ),
-      
-                Positioned(
-                  top: 10,
-                  left: 5,
-                  right: 5,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomContainer(
-                          padding: Sizes.sm,
-                          radius: 50,
-                          backgroundColor:
-                              dark
-                                  ? Colors.black
-                                : Colors.white,
-                          child: Text(
-                            'Top Listing',
-                            style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                                  color: dark ? Colors.white : Colors.black,)
-                          ),
-                        ),
-                    
-                        CustomContainer(
-                          padding: Sizes.sm,
-                          radius: 100,
-                          backgroundColor:
-                              dark
-                                  ? Colors.black.withValues(alpha: 0.8)
-                                : Colors.white.withValues(alpha: 0.8),
-                          child: Icon(Icons.favorite,
-                          color: dark ? Colors.white : Colors.black,),
-                        ),
-                      ],
-                    ),
-                  ),
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.favorite_border, color: Colors.grey[700], size: Sizes.iconM,),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.bodyMedium
+                ),
+                const SizedBox(height: Sizes.xs),
+                Text(
+                  address,
+                  style: Theme.of(context).textTheme.labelMedium
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems),
+                Text(
+                  price,
+                  style: Theme.of(context).textTheme.bodyMedium
+                ),
+                const SizedBox(height: Sizes.spaceBtwItems),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _info(Icons.bed, "$beds Beds", context),
+                    _info(Icons.bathtub, "$baths Baths", context),
+                    _info(Icons.square_foot, area, context),
+                  ],
                 ),
               ],
             ),
-          
-                const SizedBox(height: Sizes.sm,),
-                Padding(
-                  padding: const EdgeInsets.all(Sizes.sm),
-                  child: Row(children: [
-                    Text('Apartment A1',
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.bold),)
-                  ],),
-                ),
-
-                const SizedBox(height: Sizes.sm,),
-          ],
-        ),
+          ),
+        ],
       ),
+    );
+  }
+
+  Widget _info(IconData icon, String text, BuildContext context) {
+    return Row(
+      children: [
+        Icon(icon, size: 16, color: Colors.grey[600]),
+        const SizedBox(width: 4),
+        Text(
+          text,
+          style: Theme.of(context).textTheme.labelMedium),
+      ],
     );
   }
 }

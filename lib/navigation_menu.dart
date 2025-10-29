@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
 import 'feature/screens/home/home_screen.dart';
 import 'feature/screens/map/map_screen.dart';
 import 'utils/constants/custom_colors.dart';

@@ -1,102 +1,100 @@
 import 'package:flutter/material.dart';
-import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
-import '../../../utils/helper/helper_functions.dart';
-import '../../custom_widgets/containers/custom_searchbar.dart';
 import '../../custom_widgets/layout/custom_list_view.dart';
-import 'widgets/home_appbar.dart';
 import 'widgets/house_card.dart';
-import 'widgets/home_categories.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dark = HelperFunctions.isDarkMode(context);
-    double screenHeight = MediaQuery.of(context).size.height;
-    final TextEditingController searchController = TextEditingController();
-
     return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (_, innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              pinned: true,
-              floating: true,
-              expandedHeight: screenHeight * 0.09,
-              backgroundColor: dark ? Colors.black : Colors.white,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.all(Sizes.sm),
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const [HomeAppBar()],
-                ),
-              ),
-            ),
-          ];
-        },
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(Sizes.spaceBtwItems),
-            child: Column(
-              children: [
-                const SizedBox(height: Sizes.spaceBtwItems),
-                CustomSearchBar(
-                  controller: searchController,
-                  onFilterPressed: () {},
-                ),
-
-                const SizedBox(height: Sizes.spaceBtwSections),
-                const HomeCategories(),
-
-                const SizedBox(height: Sizes.spaceBtwSections),
-                CustomListView(
-                  scrollDirection: Axis.vertical,
-                  scrollPhysics: NeverScrollableScrollPhysics(),
-                  seperatorBuilder: (context, index) {
-                    return  SizedBox(height: Sizes.spaceBtwItems);
-                  },
-                  itemCount: 4,
-                  itemBuilder: (context, index) { 
-                    return HouseCard();
-                    },
-                ),
-
-                const SizedBox(height: Sizes.spaceBtwItems),
-                Container(
-                  width: 250,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    gradient: CustomColors.linearGradient2,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        spreadRadius: 2,
-                        offset: Offset(4, 6),
-                      ),
-                    ],
+      appBar: AppBar(
+        title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Location",
+                  style: Theme.of(context).textTheme.bodySmall,),
+                  Text(
+                    "New York, USA",
+                                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  child: Center(
-                    child: Text(
-                      'Gradient Box',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                ],
+              ),
+       actions: [
+        IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.notifications_outlined),
+              ),
+       ],       
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 50,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search...",
+                    hintStyle: Theme.of(context).textTheme.labelSmall,
+                    prefixIcon: const Icon(Icons.search),
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(Sizes.md),
+                      borderSide: BorderSide.none,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 16),
+              CustomListView(
+                scrollDirection: Axis.vertical,
+                itemCount: 3,
+                scrollPhysics: NeverScrollableScrollPhysics(),
+                seperatorBuilder: (context, index) => const SizedBox(
+                  height: Sizes.spaceBtwItems,
+                ),
+                itemBuilder: (context, index) =>
+                 HouseCard(
+                  imageUrl:
+                      "https://cdn.pixabay.com/photo/2024/03/07/15/57/houses-8618837_1280.jpg",
+                  title: "Lakeshore Blvd West",
+                  price: "\$797,500",
+                  address:
+                      "70 Washington Square South, New York, NY 10012, United States",
+                  beds: 2,
+                  baths: 2,
+                  area: "2000 sqft",
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
+
+class CategoryChip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  const CategoryChip({super.key, required this.label, this.selected = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: selected ? Colors.yellow : Colors.white,
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(color: selected ? Colors.black : Colors.grey[600]),
+      ),
+    );
+  }
+}
+

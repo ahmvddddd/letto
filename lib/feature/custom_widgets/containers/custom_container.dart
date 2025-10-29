@@ -7,7 +7,7 @@ class CustomContainer extends StatelessWidget {
     this.child,
     this.width,
     this.height,
-    this.radius = 400,
+    this.radius = 16,
     this.padding = 0,
     this.margin,
     this.backgroundColor = CustomColors.primary,

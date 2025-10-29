@@ -11,7 +11,7 @@ class CustomAppTheme {
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Inter',
+    fontFamily: 'Aeonik',
     brightness: Brightness.light,
     primaryColor: Colors.grey,
     scaffoldBackgroundColor: Colors.white,
@@ -24,7 +24,7 @@ class CustomAppTheme {
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Inter',
+    fontFamily: 'Aeonik',
     brightness: Brightness.dark,
     primaryColor: Colors.grey,
     scaffoldBackgroundColor: Colors.black,
