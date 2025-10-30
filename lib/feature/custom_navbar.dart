@@ -21,31 +21,55 @@ class CustomBottomNavBar extends ConsumerWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                color:
+                    dark
+                        ? Colors.black.withValues(alpha: 0.5)
+                        : Colors.white.withValues(alpha: 0.5),
+                spreadRadius: 2,
+                blurRadius: 10,
+                offset: Offset(4, 4),
+              ),
+            ],
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: BottomNavigationBar(
-            backgroundColor:dark ? Colors.black : Colors.white,
+              backgroundColor: dark ? Colors.black : Colors.white,
               currentIndex: navIndex,
-              onTap: (index) => ref.read(navigationProvider.notifier).state = index,
+              onTap:
+                  (index) =>
+                      ref.read(navigationProvider.notifier).state = index,
               type: BottomNavigationBarType.fixed,
               selectedItemColor: CustomColors.primary,
               unselectedItemColor: dark ? Colors.white : Colors.black,
               elevation: 0,
               items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Iconsax.home, size: Sizes.iconM,),
-                  activeIcon: Icon(Iconsax.home_1, color: CustomColors.primary, size: Sizes.iconM,),
+                  icon: Icon(Iconsax.home_14, size: Sizes.iconM),
+                  activeIcon: Icon(
+                    Iconsax.home_11,
+                    color: CustomColors.primary,
+                    size: Sizes.iconM,
+                  ),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.favorite_border),
-                  activeIcon: Icon(Icons.favorite, color: CustomColors.primary, size: Sizes.iconM,),
+                  activeIcon: Icon(
+                    Icons.favorite,
+                    color: CustomColors.primary,
+                    size: Sizes.iconM,
+                  ),
                   label: 'Favorites',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Iconsax.user, size: Sizes.iconM,),
-                  activeIcon: Icon(Iconsax.user, color: CustomColors.primary, size: Sizes.iconM,),
+                  icon: Icon(Iconsax.user, size: Sizes.iconM),
+                  activeIcon: Icon(
+                    Icons.person,
+                    color: CustomColors.primary,
+                  ),
                   label: 'Profile',
                 ),
               ],

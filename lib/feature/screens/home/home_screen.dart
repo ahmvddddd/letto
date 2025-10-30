@@ -28,48 +28,52 @@ class HomeScreen extends StatelessWidget {
               ),
        ],       
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(Sizes.spaceBtwItems),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "Search...",
-                    hintStyle: Theme.of(context).textTheme.labelSmall,
-                    prefixIcon: const Icon(Icons.search),
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(Sizes.md),
-                      borderSide: BorderSide.none,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Search...",
+                      hintStyle: Theme.of(context).textTheme.labelSmall,
+                      prefixIcon: const Icon(Icons.search),
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(Sizes.md),
+                        borderSide: BorderSide.none,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              CustomListView(
-                scrollDirection: Axis.vertical,
-                itemCount: 3,
-                scrollPhysics: NeverScrollableScrollPhysics(),
-                seperatorBuilder: (context, index) => const SizedBox(
-                  height: Sizes.spaceBtwItems,
+                const SizedBox(height: 16),
+                CustomListView(
+                  scrollDirection: Axis.vertical,
+                  itemCount: 3,
+                  scrollPhysics: NeverScrollableScrollPhysics(),
+                  seperatorBuilder: (context, index) => const SizedBox(
+                    height: Sizes.spaceBtwItems,
+                  ),
+                  itemBuilder: (context, index) =>
+                   HouseCard(
+                    imageUrl:
+                        "https://cdn.pixabay.com/photo/2024/03/07/15/57/houses-8618837_1280.jpg",
+                    title: "Lakeshore Blvd West",
+                    price: "\$797,500",
+                    address:
+                        "70 Washington Square South, New York, NY 10012, United States",
+                    beds: 2,
+                    baths: 2,
+                    area: "2000 sqft",
+                  ),
                 ),
-                itemBuilder: (context, index) =>
-                 HouseCard(
-                  imageUrl:
-                      "https://cdn.pixabay.com/photo/2024/03/07/15/57/houses-8618837_1280.jpg",
-                  title: "Lakeshore Blvd West",
-                  price: "\$797,500",
-                  address:
-                      "70 Washington Square South, New York, NY 10012, United States",
-                  beds: 2,
-                  baths: 2,
-                  area: "2000 sqft",
-                ),
-              ),
-            ],
+        
+                const SizedBox(height: Sizes.spaceBtwSections,)
+              ],
+            ),
           ),
         ),
       ),
