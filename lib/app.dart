@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'feature/custom_navbar.dart';
+import 'feature/screens/favorite/favorites_screen.dart';
 import 'feature/screens/home/home_screen.dart';
 import 'utils/theme/theme.dart';
 
@@ -14,7 +15,7 @@ class App extends ConsumerWidget {
 
     final screens = [
       const HomeScreen(),
-      const HomeScreen(),
+      const FavoritesScreen(),
       const HomeScreen(),
     ];
 
