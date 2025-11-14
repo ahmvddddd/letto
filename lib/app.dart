@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:letto/feature/screens/story/story.dart';
 import 'feature/custom_navbar.dart';
 import 'feature/screens/favorite/favorites_screen.dart';
 import 'feature/screens/home/home_screen.dart';
@@ -16,7 +17,7 @@ class App extends ConsumerWidget {
     final screens = [
       const HomeScreen(),
       const FavoritesScreen(),
-      const HomeScreen(),
+      const StoryScreen(),
     ];
 
     return MaterialApp(
