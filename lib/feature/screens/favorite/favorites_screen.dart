@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/layout/custom_list_view.dart';
+import '../../models/house/house_model.dart';
 import '../home/widgets/house_card.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -50,15 +51,13 @@ class FavoritesScreen extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) =>
                    HouseCard(
-                    imageUrl:
-                        "https://cdn.pixabay.com/photo/2024/03/07/15/57/houses-8618837_1280.jpg",
-                    title: "Lakeshore Blvd West",
-                    price: "\$797,500",
-                    address:
-                        "70 Washington Square South, New York, NY 10012, United States",
-                    beds: 2,
-                    baths: 2,
-                    area: "2000 sqft",
+                      imageUrl: houseList[index].imageUrl,
+                      title: houseList[index].title,
+                      price: houseList[index].price,
+                      address: houseList[index].address,
+                      beds: houseList[index].beds,
+                      baths: houseList[index].baths,
+                      area: houseList[index].area,
                   ),
                 ),
         
