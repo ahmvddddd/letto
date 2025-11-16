@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/layout/custom_list_view.dart';
 import '../../models/house/house_model.dart';
+import '../apartment/apartment_screen.dart';
 import '../story/widgets/story_view.dart';
 import 'widgets/house_card.dart';
 
@@ -68,14 +69,17 @@ class HomeScreen extends StatelessWidget {
 
                     int houseIndex = index > 2 ? index - 1 : index;
 
-                    return HouseCard(
-                      imageUrl: houseList[houseIndex].imageUrl,
-                      title: houseList[houseIndex].title,
-                      price: houseList[houseIndex].price,
-                      address: houseList[houseIndex].address,
-                      beds: houseList[houseIndex].beds,
-                      baths: houseList[houseIndex].baths,
-                      area: houseList[houseIndex].area,
+                    return GestureDetector(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ApartmentScreen())),
+                      child: HouseCard(
+                        imageUrl: houseList[houseIndex].imageUrl,
+                        title: houseList[houseIndex].title,
+                        price: houseList[houseIndex].price,
+                        address: houseList[houseIndex].address,
+                        beds: houseList[houseIndex].beds,
+                        baths: houseList[houseIndex].baths,
+                        area: houseList[houseIndex].area,
+                      ),
                     );
                   },
                 ),

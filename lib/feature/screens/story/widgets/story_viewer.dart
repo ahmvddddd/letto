@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../models/story/story_model.dart';
 
 class StoryViewer extends StatefulWidget {
