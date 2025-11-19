@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Location", style: Theme.of(context).textTheme.bodySmall),
-            Text("New York, USA",
+            Text("Abuja, Niigeria",
                 style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),

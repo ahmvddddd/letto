@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:letto/utils/helper/helper_functions.dart';
+import '../../../feature/custom_widgets/containers/custom_bottom_bar.dart';
+import '../../../utils/helper/helper_functions.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import 'widgets/apartment_details.dart';
 import 'widgets/apartment_image.dart';
@@ -29,20 +30,28 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
       backgroundColor: dark ? Colors.grey[400] : Colors.grey[200],
       appBar: AppBar(
         leading: GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(Icons.arrow_back, size: Sizes.iconSm),
-                  ),
-        title: Text('Apartment Name',
-        style: Theme.of(context).textTheme.headlineSmall,),
+          onTap: () => Navigator.pop(context),
+          child: const Icon(Icons.arrow_back, size: Sizes.iconSm),
+        ),
+        title: Text(
+          'Apartment Name',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         centerTitle: true,
-        actions: [
-          const Icon(Icons.favorite_border),
-        ],),
-        
+        actions: [const Icon(Icons.favorite_border)],
+      ),
+      bottomNavigationBar: CustomBottomBar(
+        child: Text(
+          'Book',
+          style: Theme.of(
+            context,
+          ).textTheme.labelMedium!.copyWith(color: Colors.white),
+        ),
+      ),
+
       body: SafeArea(
         child: Column(
           children: [
-
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -54,34 +63,34 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
                     ApartmentDetails(),
 
                     const SizedBox(height: Sizes.spaceBtwItems),
-                    
+
                     ApartmentInfo(),
 
                     const SizedBox(height: Sizes.spaceBtwItems),
                     ApartmentMap(currentLatLng: currentLatLng),
 
                     const SizedBox(height: Sizes.spaceBtwItems),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.yellow[600],
-                            foregroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                            "Book Schedule",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 16),
+                    //   child: SizedBox(
+                    //     width: double.infinity,
+                    //     child: ElevatedButton(
+                    //       style: ElevatedButton.styleFrom(
+                    //         backgroundColor: Colors.yellow[600],
+                    //         foregroundColor: Colors.black,
+                    //         padding: const EdgeInsets.symmetric(vertical: 16),
+                    //         shape: RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.circular(50),
+                    //         ),
+                    //       ),
+                    //       onPressed: () {},
+                    //       child: const Text(
+                    //         "Book Schedule",
+                    //         style: TextStyle(fontSize: 16),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
 
                     const SizedBox(height: 40),
                   ],
@@ -93,11 +102,4 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
       ),
     );
   }
-  }
-
-
-
-
-
-
-
+}
