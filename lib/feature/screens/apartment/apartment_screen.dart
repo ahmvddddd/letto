@@ -31,21 +31,21 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
-          child: const Icon(Icons.arrow_back, size: Sizes.iconSm),
+          child: const Icon(Icons.arrow_back,),
         ),
         title: Text(
           'Apartment Name',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
-        actions: [const Icon(Icons.favorite_border)],
+        actions: [const Icon(Icons.favorite_border), const SizedBox(width: 16)],
       ),
       bottomNavigationBar: CustomBottomBar(
         child: Text(
           'Book',
           style: Theme.of(
             context,
-          ).textTheme.labelMedium!.copyWith(color: Colors.white),
+          ).textTheme.bodySmall!.copyWith(color: Colors.white),
         ),
       ),
 
@@ -70,29 +70,6 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
                     ApartmentMap(currentLatLng: currentLatLng),
 
                     const SizedBox(height: Sizes.spaceBtwItems),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 16),
-                    //   child: SizedBox(
-                    //     width: double.infinity,
-                    //     child: ElevatedButton(
-                    //       style: ElevatedButton.styleFrom(
-                    //         backgroundColor: Colors.yellow[600],
-                    //         foregroundColor: Colors.black,
-                    //         padding: const EdgeInsets.symmetric(vertical: 16),
-                    //         shape: RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.circular(50),
-                    //         ),
-                    //       ),
-                    //       onPressed: () {},
-                    //       child: const Text(
-                    //         "Book Schedule",
-                    //         style: TextStyle(fontSize: 16),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-
-                    const SizedBox(height: 40),
                   ],
                 ),
               ),

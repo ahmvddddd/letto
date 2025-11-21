@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../utils/constants/custom_sizes.dart';
 import '../../../custom_widgets/containers/info_box.dart';
 

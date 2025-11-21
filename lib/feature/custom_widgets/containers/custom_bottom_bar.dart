@@ -16,7 +16,6 @@ class CustomBottomBar extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           color: CustomColors.primary,
-          border: Border.all(color: dark ? CustomColors.darkerGrey : CustomColors.darkGrey, width: 1),
           boxShadow: [
             BoxShadow(
               color:
