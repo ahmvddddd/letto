@@ -26,13 +26,10 @@ class ApartmentDetails extends StatelessWidget {
               color: Colors.black54,
             ),
           ),
-          const SizedBox(height: 5),
-          const Text(
+          const SizedBox(height: Sizes.xs),
+          Text(
             "\$797,500",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.headlineLarge
           ),
           const SizedBox(height: Sizes.sm),
     
