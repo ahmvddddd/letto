@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../utils/constants/custom_sizes.dart';
+import '../../../../utils/helper/helper_functions.dart';
 
 class ApartmentInfo extends StatelessWidget {
   const ApartmentInfo({
@@ -7,12 +9,16 @@ class ApartmentInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(Sizes.spaceBtwItems),
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
+        color: 
+            dark
+                ? Colors.white.withValues(alpha: 0.1)
+                : Colors.black.withValues(alpha: 0.1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +30,7 @@ class ApartmentInfo extends StatelessWidget {
           SizedBox(height: 8),
           Text(
             "Perfectly nestled in a serene setting, this charming unit features 2 spacious bedrooms and modern amenities…",
-            style: TextStyle(fontSize: 14, height: 1.4),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
       ),

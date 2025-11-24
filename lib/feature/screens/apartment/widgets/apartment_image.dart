@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../utils/constants/images.dart';
 
 class ApartmentImage extends StatelessWidget {
-  const ApartmentImage({
-    super.key,
-  });
+  final String imageUrl;
+  const ApartmentImage({super.key,
+  required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class ApartmentImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: AspectRatio(
           aspectRatio: 16 / 10,
-          child: Image.asset(Images.duplex, fit: BoxFit.cover),
+          child: Image.asset(imageUrl, fit: BoxFit.cover),
         ),
       ),
     );

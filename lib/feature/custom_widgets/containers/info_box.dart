@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../utils/helper/helper_functions.dart';
 
 class InfoBox extends StatelessWidget {
   final IconData icon;
@@ -11,10 +12,14 @@ class InfoBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
       decoration: BoxDecoration(
-        color: Colors.grey[100],
+        color: 
+            dark
+                ? Colors.white.withValues(alpha: 0.1)
+                : Colors.black.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(

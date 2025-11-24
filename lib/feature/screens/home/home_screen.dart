@@ -11,15 +11,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Location", style: Theme.of(context).textTheme.bodySmall),
-            Text("Abuja, Niigeria",
-                style: Theme.of(context).textTheme.bodyMedium),
+            Text(
+              "Abuja, Niigeria",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ],
         ),
         actions: [
@@ -55,22 +56,30 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 16),
 
                 CustomListView(
-                  itemCount: 6,  // 6 total items
+                  itemCount: 6, // 6 total items
                   scrollDirection: Axis.vertical,
                   scrollPhysics: const NeverScrollableScrollPhysics(),
-                  seperatorBuilder: (context, index) =>
-                      const SizedBox(height: Sizes.spaceBtwItems),
+                  seperatorBuilder:
+                      (context, index) =>
+                          const SizedBox(height: Sizes.spaceBtwItems),
 
                   itemBuilder: (context, index) {
                     if (index == 2) {
-                      
                       return const StoryView();
                     }
 
                     int houseIndex = index > 2 ? index - 1 : index;
 
                     return GestureDetector(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ApartmentScreen())),
+                      onTap:
+                          () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ApartmentScreen(house: houseList[houseIndex]);
+                              },
+                            ),
+                          ),
                       child: HouseCard(
                         imageUrl: houseList[houseIndex].imageUrl,
                         title: houseList[houseIndex].title,

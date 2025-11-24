@@ -1,44 +1,49 @@
 import 'package:flutter/material.dart';
+import '../../../../utils/helper/helper_functions.dart';
 import '../../../../utils/constants/custom_sizes.dart';
 import '../../../custom_widgets/containers/info_box.dart';
 
 class ApartmentDetails extends StatelessWidget {
+  final String address;
+  final String price;
+  final int beds;
+  final int baths;
+  final String area;
   const ApartmentDetails({
     super.key,
-  });
+    required this.address,
+    required this.price,
+    required this.beds,
+    required this.baths,
+    required this.area,});
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color:
+            dark
+                ? Colors.white.withValues(alpha: 0.1)
+                : Colors.black.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Lakeshore Blvd West",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.black54,
-            ),
-          ),
-          const SizedBox(height: Sizes.xs),
-          Text(
-            "\$797,500",
-            style: Theme.of(context).textTheme.headlineLarge
-          ),
+          Text(address, style: Theme.of(context).textTheme.labelMedium),
           const SizedBox(height: Sizes.sm),
-    
+          Text(price, style: Theme.of(context).textTheme.headlineLarge),
+          const SizedBox(height: Sizes.spaceBtwItems),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InfoBox(icon: Icons.bed, text: "2 Beds"),
-              InfoBox(icon: Icons.bathtub, text: "2 Baths"),
-              InfoBox(icon: Icons.square_foot,text: "2000 Sqft"),
+              InfoBox(icon: Icons.bed, text: beds.toString()),
+              InfoBox(icon: Icons.bathtub, text: baths.toString()),
+              InfoBox(icon: Icons.square_foot, text: area),
             ],
           ),
         ],
