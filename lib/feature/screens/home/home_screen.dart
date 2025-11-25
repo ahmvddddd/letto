@@ -30,72 +30,70 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(Sizes.spaceBtwItems),
-            child: Column(
-              children: [
-                // Search bar
-                SizedBox(
-                  height: 50,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Search...",
-                      prefixIcon: const Icon(Icons.search),
-                      filled: true,
-                      hintStyle: Theme.of(context).textTheme.labelSmall,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(Sizes.md),
-                        borderSide: BorderSide.none,
-                      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+          child: Column(
+            children: [
+              // Search bar
+              SizedBox(
+                height: 50,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search...",
+                    prefixIcon: const Icon(Icons.search),
+                    filled: true,
+                    hintStyle: Theme.of(context).textTheme.labelSmall,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(Sizes.md),
+                      borderSide: BorderSide.none,
                     ),
                   ),
                 ),
-
-                const SizedBox(height: 16),
-
-                CustomListView(
-                  itemCount: 6, // 6 total items
-                  scrollDirection: Axis.vertical,
-                  scrollPhysics: const NeverScrollableScrollPhysics(),
-                  seperatorBuilder:
-                      (context, index) =>
-                          const SizedBox(height: Sizes.spaceBtwItems),
-
-                  itemBuilder: (context, index) {
-                    if (index == 2) {
-                      return const StoryView();
-                    }
-
-                    int houseIndex = index > 2 ? index - 1 : index;
-
-                    return GestureDetector(
-                      onTap:
-                          () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return ApartmentScreen(house: houseList[houseIndex]);
-                              },
-                            ),
+              ),
+      
+              const SizedBox(height: 16),
+      
+              CustomListView(
+                itemCount: 6, // 6 total items
+                scrollDirection: Axis.vertical,
+                scrollPhysics: const NeverScrollableScrollPhysics(),
+                seperatorBuilder:
+                    (context, index) =>
+                        const SizedBox(height: Sizes.spaceBtwItems),
+      
+                itemBuilder: (context, index) {
+                  if (index == 2) {
+                    return const StoryView();
+                  }
+      
+                  int houseIndex = index > 2 ? index - 1 : index;
+      
+                  return GestureDetector(
+                    onTap:
+                        () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return ApartmentScreen(house: houseList[houseIndex]);
+                            },
                           ),
-                      child: HouseCard(
-                        imageUrl: houseList[houseIndex].imageUrl,
-                        title: houseList[houseIndex].title,
-                        price: houseList[houseIndex].price,
-                        address: houseList[houseIndex].address,
-                        beds: houseList[houseIndex].beds,
-                        baths: houseList[houseIndex].baths,
-                        area: houseList[houseIndex].area,
-                      ),
-                    );
-                  },
-                ),
-
-                const SizedBox(height: Sizes.spaceBtwSections),
-              ],
-            ),
+                        ),
+                    child: HouseCard(
+                      imageUrl: houseList[houseIndex].imageUrl,
+                      title: houseList[houseIndex].title,
+                      price: houseList[houseIndex].price,
+                      address: houseList[houseIndex].address,
+                      beds: houseList[houseIndex].beds,
+                      baths: houseList[houseIndex].baths,
+                      area: houseList[houseIndex].area,
+                    ),
+                  );
+                },
+              ),
+      
+              const SizedBox(height: Sizes.spaceBtwSections),
+            ],
           ),
         ),
       ),
