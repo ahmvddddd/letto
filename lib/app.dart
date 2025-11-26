@@ -27,15 +27,17 @@ class App extends ConsumerWidget {
       darkTheme: CustomAppTheme.darkTheme,
       home: Scaffold(
         extendBody: true,
-        body: Stack(children: [
-          Positioned.fill(child: screens[navIndex]),
-          const Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: CustomBottomNavBar(),
-          ),
-          ]),
+        body: SafeArea(
+          child: Stack(children: [
+            Positioned.fill(child: screens[navIndex]),
+            const Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: CustomBottomNavBar(),
+            ),
+            ]),
+        ),
         // bottomNavigationBar: const CustomBottomNavBar(),
       ),
     );

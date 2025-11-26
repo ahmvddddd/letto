@@ -91,9 +91,16 @@ class HouseCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelMedium
                 ),
                 const SizedBox(height: Sizes.spaceBtwItems),
-                Text(
-                  price,
-                  style: Theme.of(context).textTheme.bodyMedium
+                Row(
+                  children: [
+                    Text(
+                      '₦$price',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontFamily: 'Inter'),
+                    ),
+
+                    const SizedBox(width: Sizes.xs),
+                    Text('/ day', style : Theme.of(context).textTheme.bodySmall)
+                  ],
                 ),
                 const SizedBox(height: Sizes.spaceBtwItems),
                 Row(

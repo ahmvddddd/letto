@@ -35,7 +35,13 @@ class ApartmentDetails extends StatelessWidget {
         children: [
           Text(address, style: Theme.of(context).textTheme.labelMedium),
           const SizedBox(height: Sizes.sm),
-          Text(price, style: Theme.of(context).textTheme.headlineLarge),
+          Row(
+            children: [
+              Text('₦$price', style: Theme.of(context).textTheme.headlineLarge!.copyWith(fontFamily: 'Inter')),
+              const SizedBox(width: Sizes.xs),
+              Text('/ day', style: Theme.of(context).textTheme.bodyMedium)
+            ],
+          ),
           const SizedBox(height: Sizes.spaceBtwItems),
 
           Row(

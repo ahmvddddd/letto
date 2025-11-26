@@ -24,7 +24,7 @@ final houseList = [
   HouseModel(
     imageUrl: Images.duplex,
     title: "Lakeshore Blvd West",
-    price: "\$797,500",
+    price: "797,500",
     address: "70 Washington Square South, New York, NY 10012, United States",
     beds: 2,
     baths: 2,
@@ -33,7 +33,7 @@ final houseList = [
   HouseModel(
     imageUrl: Images.apartment,
     title: "Brooklyn Heights",
-    price: "\$680,000",
+    price: "680,000",
     address: "12 Columbia Heights, Brooklyn, NY",
     beds: 3,
     baths: 2,
@@ -42,7 +42,7 @@ final houseList = [
   HouseModel(
     imageUrl: Images.condominium,
     title: "Manhattan View",
-    price: "\$1,200,000",
+    price: "1,200,000",
     address: "5th Avenue, Manhattan, NY",
     beds: 2,
     baths: 1,
@@ -51,7 +51,7 @@ final houseList = [
   HouseModel(
     imageUrl: Images.duplex,
     title: "Soho Villa",
-    price: "\$950,000",
+    price: "950,000",
     address: "75 Greene Street, Soho, NY",
     beds: 4,
     baths: 3,
@@ -60,7 +60,7 @@ final houseList = [
   HouseModel(
     imageUrl: Images.apartment,
     title: "Uptown Condo",
-    price: "\$500,000",
+    price: "500,000",
     address: "Central Park West, NY",
     beds: 1,
     baths: 1,
@@ -69,7 +69,7 @@ final houseList = [
   HouseModel(
     imageUrl: Images.condominium,
     title: "Harlem Duplex",
-    price: "\$450,000",
+    price: "450,000",
     address: "Lenox Avenue, Harlem, NY",
     beds: 2,
     baths: 2,
