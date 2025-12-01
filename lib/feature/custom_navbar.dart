@@ -40,7 +40,9 @@ class CustomBottomNavBar extends ConsumerWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: BottomNavigationBar(
-              backgroundColor: dark ? Colors.black : Colors.white,
+              backgroundColor: dark
+                        ? Colors.black.withValues(alpha: 0.3)
+                        : Colors.white.withValues(alpha: 0.3),
               currentIndex: navIndex,
               onTap:
                   (index) =>
