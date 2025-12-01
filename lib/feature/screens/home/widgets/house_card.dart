@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../utils/constants/custom_sizes.dart';
 import '../../../../utils/helper/helper_functions.dart';
 import '../../../custom_widgets/containers/custom_container.dart';
+import 'house_info.dart';
 
 class HouseCard extends StatelessWidget {
   final String imageUrl;
@@ -95,20 +96,20 @@ class HouseCard extends StatelessWidget {
                   children: [
                     Text(
                       '₦$price',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontFamily: 'Inter'),
+                      style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontFamily: 'Inter'),
                     ),
 
                     const SizedBox(width: Sizes.xs),
-                    Text('/ day', style : Theme.of(context).textTheme.bodySmall)
+                    Text('/ day', style : Theme.of(context).textTheme.bodyMedium)
                   ],
                 ),
                 const SizedBox(height: Sizes.spaceBtwItems),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _info(Icons.bed, "$beds Beds", context),
-                    _info(Icons.bathtub, "$baths Baths", context),
-                    _info(Icons.square_foot, area, context),
+                    HouseInfo(icon: Icons.bed, text: "$beds Beds"),
+                    HouseInfo(icon: Icons.bathtub, text: "$baths Baths"),
+                    HouseInfo(icon: Icons.square_foot, text: area),
                   ],
                 ),
               ],
@@ -116,18 +117,6 @@ class HouseCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _info(IconData icon, String text, BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, size: 16, color: Colors.grey[600]),
-        const SizedBox(width: 4),
-        Text(
-          text,
-          style: Theme.of(context).textTheme.labelMedium),
-      ],
     );
   }
 }
