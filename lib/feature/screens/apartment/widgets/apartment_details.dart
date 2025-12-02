@@ -33,7 +33,7 @@ class ApartmentDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(address, style: Theme.of(context).textTheme.labelMedium),
+          Text(address, style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: Sizes.sm),
           Row(
             children: [
