@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../utils/constants/custom_sizes.dart';
+import 'widgets/booking_info.dart';
+
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
 
@@ -8,8 +11,7 @@ class BookingScreen extends StatefulWidget {
 }
 
 class _BookingScreenState extends State<BookingScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
+  
 
   String guestCount = "1";
   String paymentType = "Full payment";
@@ -30,77 +32,12 @@ class _BookingScreenState extends State<BookingScreen> {
           children: [
 
             // ---- Hotel Info ----
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade200),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Lasik Braga Villa",
-                    style: TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 6),
-                  const Text("330 East 5th Street, Long Beach, CA"),
-                  const SizedBox(height: 6),
-                  Row(
-                    children: const [
-                      Icon(Icons.star, color: Colors.amber, size: 18),
-                      SizedBox(width: 4),
-                      Text("4.4"),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
+            BookingInfo(),
 
-                  _priceRow("A-night", "\$90.00"),
-                  _priceRow("Tax", "\$15.00"),
-                  const Divider(),
-                  _priceRow("Total", "\$375.00", bold: true),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 24),
+            const SizedBox(height: Sizes.spaceBtwSections),
 
             // ---- Order Details ----
-            Text("Order details",
-                style:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-
-            const SizedBox(height: 12),
-
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: nameController,
-                    decoration: InputDecoration(
-                      hintText: "Enter name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: TextField(
-                    controller: phoneController,
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      hintText: "Phone number",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            
 
             const SizedBox(height: 12),
 
@@ -220,23 +157,6 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
     );
   }
-
-  Widget _priceRow(String title, String amount, {bool bold = false}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title,
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: bold ? FontWeight.bold : FontWeight.normal)),
-          Text(amount,
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: bold ? FontWeight.bold : FontWeight.normal)),
-        ],
-      ),
-    );
-  }
 }
+
+
