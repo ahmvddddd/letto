@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../utils/constants/custom_sizes.dart';
+import '../../../../utils/helper/helper_functions.dart';
 import 'price_row.dart';
 
 class BookingInfo extends StatelessWidget {
@@ -8,28 +10,30 @@ class BookingInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade200),
-        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: dark ? Colors.white : Colors.black),
+        borderRadius: BorderRadius.circular(Sizes.sm),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Lasik Braga Villa",
-            style: TextStyle(
-              fontSize: 18, fontWeight: FontWeight.bold),
+          Text(
+            "Lasik Braga Villa", 
+          style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 6),
-          const Text("330 East 5th Street, Long Beach, CA"),
+          Text("330 East 5th Street, Long Beach, CA", 
+          style: Theme.of(context).textTheme.bodyMedium,),
           const SizedBox(height: 6),
           Row(
-            children: const [
+            children: [
               Icon(Icons.star, color: Colors.amber, size: 18),
               SizedBox(width: 4),
-              Text("4.4"),
+              Text("4.4", style: Theme.of(context).textTheme.labelLarge,),
             ],
           ),
           const SizedBox(height: 16),
