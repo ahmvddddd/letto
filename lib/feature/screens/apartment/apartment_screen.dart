@@ -63,8 +63,8 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
 
                   const SizedBox(height: Sizes.spaceBtwItems),
                   ApartmentMap(currentLatLng: currentLatLng),
-
-                  const SizedBox(height: Sizes.spaceBtwItems),
+                  
+                  const SizedBox(height: Sizes.spaceBtwSections * 4)
                 ],
               ),
             ),
