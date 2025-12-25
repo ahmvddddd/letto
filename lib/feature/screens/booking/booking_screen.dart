@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/containers/custom_bottom_bar.dart';
 import 'widgets/booking_info.dart';
+import 'widgets/booking_message.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -122,19 +123,7 @@ class _BookingScreenState extends State<BookingScreen> {
             
                   const SizedBox(height: 16),
             
-                  Row(
-                    children: const [
-                      Icon(Icons.check_circle, color: Colors.green),
-                      SizedBox(width: 6),
-                      Expanded(
-                        child: Text(
-                          "We’ll call or text you to confirm your number. "
-                          "Standard message and data rates apply.",
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ),
-                    ],
-                  ),
+                  BookingMessage(),
             
                   const SizedBox(height: Sizes.spaceBtwSections * 4),
                 ],
