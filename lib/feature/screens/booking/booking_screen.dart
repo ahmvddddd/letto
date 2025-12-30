@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
 import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/containers/custom_bottom_bar.dart';
+import 'widgets/booking_dropdown.dart';
 import 'widgets/booking_info.dart';
 import 'widgets/booking_message.dart';
+import 'widgets/card_selection.dart';
+import 'widgets/payment_method.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -14,10 +16,6 @@ class BookingScreen extends StatefulWidget {
 
 class _BookingScreenState extends State<BookingScreen> {
   
-
-  String guestCount = "1";
-  String paymentType = "Full payment";
-  String selectedCard = "VISA •••• 7282";
 
   @override
   Widget build(BuildContext context) {
@@ -44,84 +42,22 @@ class _BookingScreenState extends State<BookingScreen> {
                   // ---- Order Details ----
                   
             
-                  const SizedBox(height: 12),
+                  const SizedBox(height: Sizes.spaceBtwItems),
             
                   // Guest Dropdown
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        value: guestCount,
-                        items: ["1", "2", "3", "4"]
-                            .map((e) => DropdownMenuItem(
-                                value: e, child: Text("$e Guest(s)")))
-                            .toList(),
-                        onChanged: (val) => setState(() => guestCount = val!),
-                      ),
-                    ),
-                  ),
+                  BookingDropdown(),
             
-                  const SizedBox(height: 24),
+                  const SizedBox(height: Sizes.spaceBtwSections),
             
                   // ---- Payment Method ----
-                  Text("Payment method",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 12),
+                  PaymentMethod(),
             
-                  // Payment type dropdown
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        value: paymentType,
-                        items: [
-                          "Full payment",
-                          "Pay later",
-                        ]
-                            .map((e) =>
-                                DropdownMenuItem(value: e, child: Text(e)))
-                            .toList(),
-                        onChanged: (val) =>
-                            setState(() => paymentType = val!),
-                      ),
-                    ),
-                  ),
-            
-                  const SizedBox(height: 12),
+                  const SizedBox(height: Sizes.spaceBtwItems),
             
                   // Card selection
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        value: selectedCard,
-                        items: [
-                          "VISA •••• 7282",
-                          "MasterCard •••• 5521"
-                        ]
-                            .map((e) =>
-                                DropdownMenuItem(value: e, child: Text(e)))
-                            .toList(),
-                        onChanged: (val) =>
-                            setState(() => selectedCard = val!),
-                      ),
-                    ),
-                  ),
+                  CardSelection(),
             
-                  const SizedBox(height: 16),
+                  const SizedBox(height: Sizes.spaceBtwItems),
             
                   BookingMessage(),
             
