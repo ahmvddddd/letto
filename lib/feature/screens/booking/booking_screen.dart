@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
+import '../../../utils/helper/helper_functions.dart';
+import '../../custom_widgets/containers/custom_appbar.dart';
 import '../../custom_widgets/containers/custom_bottom_bar.dart';
+import 'widgets/booking_details.dart';
 import 'widgets/booking_dropdown.dart';
 import 'widgets/booking_info.dart';
 import 'widgets/booking_message.dart';
@@ -15,15 +18,17 @@ class BookingScreen extends StatefulWidget {
 }
 
 class _BookingScreenState extends State<BookingScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
     return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(),
-        title: const Text("Book now"),
-        elevation: 0,
+      appBar: CustomAppBar(
+        title: Text(
+          "Book now",
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        showBackArrow: true,
+        centerTitle: true,
       ),
       body: Stack(
         children: [
@@ -33,34 +38,63 @@ class _BookingScreenState extends State<BookingScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-            
                   // ---- Hotel Info ----
                   BookingInfo(),
-            
+
                   const SizedBox(height: Sizes.spaceBtwSections),
-            
-                  // ---- Order Details ----
-                  
-            
-                  const SizedBox(height: Sizes.spaceBtwItems),
-            
-                  // Guest Dropdown
-                  BookingDropdown(),
-            
+
+                  // Order Details
+                  Container(
+                    padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+                    decoration: BoxDecoration(
+                      color:
+                          dark
+                              ? Colors.white.withValues(alpha: 0.1)
+                              : Colors.black.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(Sizes.sm),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BookingDetails(),
+
+                        const SizedBox(height: Sizes.spaceBtwItems),
+
+                        // Guest Dropdown
+                        BookingDropdown(),
+                      ],
+                    ),
+                  ),
+
                   const SizedBox(height: Sizes.spaceBtwSections),
-            
-                  // ---- Payment Method ----
-                  PaymentMethod(),
-            
-                  const SizedBox(height: Sizes.spaceBtwItems),
-            
-                  // Card selection
-                  CardSelection(),
-            
-                  const SizedBox(height: Sizes.spaceBtwItems),
-            
-                  BookingMessage(),
-            
+
+                  //Payment Method
+                  Container(
+                    padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+                    decoration: BoxDecoration(
+                      color:
+                          dark
+                              ? Colors.white.withValues(alpha: 0.1)
+                              : Colors.black.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(Sizes.sm),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        PaymentMethod(),
+
+                        const SizedBox(height: Sizes.spaceBtwItems),
+
+                        // Card selection
+                        CardSelection(),
+
+                        const SizedBox(height: Sizes.spaceBtwItems),
+
+                        BookingMessage(),
+                      ],
+                    ),
+                  ),
+
                   const SizedBox(height: Sizes.spaceBtwSections * 4),
                 ],
               ),
@@ -75,7 +109,9 @@ class _BookingScreenState extends State<BookingScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const BookingScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => const BookingScreen(),
+                  ),
                 );
               },
               child: Text(
@@ -91,5 +127,3 @@ class _BookingScreenState extends State<BookingScreen> {
     );
   }
 }
-
-

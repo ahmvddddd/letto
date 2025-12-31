@@ -13,9 +13,12 @@ class BookingInfo extends StatelessWidget {
     final dark = HelperFunctions.isDarkMode(context);
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(Sizes.spaceBtwItems),
       decoration: BoxDecoration(
-        border: Border.all(color: dark ? Colors.white : Colors.black),
+        color:
+            dark
+                ? Colors.white.withValues(alpha: 0.1)
+                : Colors.black.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(Sizes.sm),
       ),
       child: Column(
