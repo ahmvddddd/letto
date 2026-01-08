@@ -9,6 +9,7 @@ import 'widgets/apartment_details.dart';
 import 'widgets/apartment_image.dart';
 import 'widgets/apartment_info.dart';
 import 'widgets/apartment_map.dart';
+import 'widgets/realtor_card.dart';
 
 class ApartmentScreen extends StatefulWidget {
   final HouseModel house;
@@ -48,6 +49,9 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
                   ApartmentImage(imageUrl: widget.house.imageUrl),
 
                   const SizedBox(height: Sizes.spaceBtwItems),
+                  RealtorCard(name: 'John Doe', role: 'Agent'),
+
+                  const SizedBox(height: Sizes.spaceBtwItems),
 
                   ApartmentDetails(
                     address: widget.house.address,
@@ -63,8 +67,8 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
 
                   const SizedBox(height: Sizes.spaceBtwItems),
                   ApartmentMap(currentLatLng: currentLatLng),
-                  
-                  const SizedBox(height: Sizes.spaceBtwSections * 4)
+
+                  const SizedBox(height: Sizes.spaceBtwSections * 4),
                 ],
               ),
             ),
@@ -78,7 +82,9 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const BookingScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => const BookingScreen(),
+                  ),
                 );
               },
               child: Text(

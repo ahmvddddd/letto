@@ -82,9 +82,18 @@ class HouseCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.bodyMedium
+                Row(
+                  children: [
+                    Icon(Icons.location_on, size: Sizes.iconSm, color: Colors.red),
+                    const SizedBox(width: Sizes.xs),
+                    SizedBox(
+                      width: 200,
+                      child: Text(
+                        title,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(overflow: TextOverflow.ellipsis)
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: Sizes.xs),
                 Text(
