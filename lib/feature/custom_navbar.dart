@@ -37,8 +37,8 @@ class CustomBottomNavBar extends ConsumerWidget {
             borderRadius: BorderRadius.circular(30),
             child: BottomNavigationBar(
               backgroundColor: dark
-                        ? Colors.black.withValues(alpha: 0.3)
-                        : Colors.white.withValues(alpha: 0.3),
+                        ? Colors.black
+                        : Colors.white,
               currentIndex: navIndex,
               onTap:
                   (index) =>

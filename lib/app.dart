@@ -23,7 +23,7 @@ class App extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      theme: CustomAppTheme.lightTheme,
+      theme: CustomAppTheme.darkTheme,
       darkTheme: CustomAppTheme.darkTheme,
       home: Scaffold(
         extendBody: true,

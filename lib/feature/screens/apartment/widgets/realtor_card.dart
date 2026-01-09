@@ -24,7 +24,7 @@ class RealtorCard extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Sizes.spaceBtwItems),
       child: CustomContainer(
-        padding: Sizes.md,
+        padding: Sizes.sm,
         backgroundColor:
             dark
                 ? Colors.white.withValues(alpha: 0.1)
