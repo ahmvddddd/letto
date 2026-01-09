@@ -21,10 +21,6 @@ class CustomBottomNavBar extends ConsumerWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            border: Border.all(
-              color: CustomColors.primary,
-              width: 1
-            ),
             boxShadow: [
               BoxShadow(
                 color:

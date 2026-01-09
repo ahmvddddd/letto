@@ -49,7 +49,12 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
                   ApartmentImage(imageUrl: widget.house.imageUrl),
 
                   const SizedBox(height: Sizes.spaceBtwItems),
-                  RealtorCard(name: 'John Doe', role: 'Agent'),
+                  RealtorCard(
+                    displayName: 'John Doe',
+                    role: 'Agent',
+                    details:
+                        'This realtor has extensive experience in property sales and client negotiations.',
+                  ),
 
                   const SizedBox(height: Sizes.spaceBtwItems),
 
