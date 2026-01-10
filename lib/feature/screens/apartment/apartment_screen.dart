@@ -60,6 +60,8 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
 
                   ApartmentDetails(
                     address: widget.house.address,
+                    rating: 9.0,
+                    reviewCount: 120,
                     price: widget.house.price,
                     beds: widget.house.beds,
                     baths: widget.house.baths,

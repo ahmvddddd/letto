@@ -9,13 +9,18 @@ class ApartmentDetails extends StatelessWidget {
   final int beds;
   final int baths;
   final String area;
+  final double rating;
+  final double reviewCount;
   const ApartmentDetails({
     super.key,
     required this.address,
     required this.price,
     required this.beds,
     required this.baths,
-    required this.area,});
+    required this.area,
+    required this.rating,
+    required this.reviewCount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +38,36 @@ class ApartmentDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(address, style: Theme.of(context).textTheme.bodyMedium),
-          const SizedBox(height: Sizes.sm),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Icon(Icons.star, color: Colors.yellow[800], size: Sizes.iconSm),
+
+              const SizedBox(width: Sizes.xs),
+              Text(
+                rating.toString(),
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 10),
+              ),
+
+              const SizedBox(width: Sizes.xs),
+              Text(
+                '($reviewCount reviews)',
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 10),
+              ),
+            ],
+          ),
+          // Text(address, style: Theme.of(context).textTheme.bodyMedium),
+          // const SizedBox(height: Sizes.sm),
           Row(
             children: [
-              Text('₦$price', style: Theme.of(context).textTheme.headlineLarge!.copyWith(fontFamily: 'Inter')),
+              Text(
+                '₦$price',
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineLarge!.copyWith(fontFamily: 'Inter'),
+              ),
               const SizedBox(width: Sizes.xs),
-              Text('/ day', style: Theme.of(context).textTheme.bodyMedium)
+              Text('/ day', style: Theme.of(context).textTheme.bodyMedium),
             ],
           ),
           const SizedBox(height: Sizes.spaceBtwItems),
