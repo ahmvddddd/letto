@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:letto/feature/models/house/house_model.dart';
-import '../../../feature/custom_widgets/containers/custom_bottom_bar.dart';
+import 'package:letto/features/models/house/house_model.dart';
+import '../../custom_widgets/containers/custom_bottom_bar.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/containers/custom_appbar.dart';
 import '../booking/booking_screen.dart';

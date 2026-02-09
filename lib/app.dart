@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:letto/feature/screens/story/story.dart';
-import 'feature/custom_navbar.dart';
-import 'feature/screens/favorite/favorites_screen.dart';
-import 'feature/screens/home/home_screen.dart';
+import 'features/custom_navbar.dart';
+import 'features/screens/auth/auth_screen.dart';
+import 'features/screens/favorite/favorites_screen.dart';
+import 'features/screens/home/home_screen.dart';
 import 'utils/theme/theme.dart';
 
 class App extends ConsumerWidget {
@@ -17,7 +17,7 @@ class App extends ConsumerWidget {
     final screens = [
       const HomeScreen(),
       const FavoritesScreen(),
-      const StoryScreen(),
+      const AuthScreen(),
     ];
 
     return MaterialApp(
