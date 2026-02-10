@@ -28,7 +28,7 @@ final houseList = [
     address: "70 Washington Square South, New York, NY 10012, United States",
     beds: 2,
     baths: 2,
-    area: "2000 sqft",
+    area: "Lekki",
   ),
   HouseModel(
     imageUrl: CustomImages.apartment,
@@ -37,7 +37,7 @@ final houseList = [
     address: "12 Columbia Heights, Brooklyn, NY",
     beds: 3,
     baths: 2,
-    area: "1800 sqft",
+    area: "Lekki",
   ),
   HouseModel(
     imageUrl: CustomImages.condominium,
@@ -46,7 +46,7 @@ final houseList = [
     address: "5th Avenue, Manhattan, NY",
     beds: 2,
     baths: 1,
-    area: "1500 sqft",
+    area: "Lekki",
   ),
   HouseModel(
     imageUrl: CustomImages.duplex,
@@ -55,7 +55,7 @@ final houseList = [
     address: "75 Greene Street, Soho, NY",
     beds: 4,
     baths: 3,
-    area: "2500 sqft",
+    area: "Lekki",
   ),
   HouseModel(
     imageUrl: CustomImages.apartment,
@@ -64,7 +64,7 @@ final houseList = [
     address: "Central Park West, NY",
     beds: 1,
     baths: 1,
-    area: "900 sqft",
+    area: "Lekki",
   ),
   HouseModel(
     imageUrl: CustomImages.condominium,
@@ -73,6 +73,6 @@ final houseList = [
     address: "Lenox Avenue, Harlem, NY",
     beds: 2,
     baths: 2,
-    area: "1300 sqft",
+    area: "Lekki",
   ),
 ];

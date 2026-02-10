@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../utils/constants/custom_sizes.dart';
 
 class HouseInfo extends StatelessWidget {

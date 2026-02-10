@@ -3,9 +3,9 @@ import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/containers/custom_searchbar.dart';
 import '../../custom_widgets/layout/custom_list_view.dart';
 import '../../models/house/house_model.dart';
-import '../apartment/apartment_screen.dart';
+import '../apartment/listing_details_screen.dart';
 import '../story/widgets/story_view.dart';
-import 'widgets/house_card.dart';
+import 'widgets/listing_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -65,11 +65,12 @@ class HomeScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return ApartmentScreen(house: houseList[houseIndex]);
+                          // return ApartmentScreen(house: houseList[houseIndex]);
+                          return ListingDetailsScreen();
                         },
                       ),
                     ),
-                    child: HouseCard(
+                    child: ListingCard(
                       imageUrl: houseList[houseIndex].imageUrl,
                       title: houseList[houseIndex].title,
                       price: houseList[houseIndex].price,
@@ -77,6 +78,8 @@ class HomeScreen extends StatelessWidget {
                       beds: houseList[houseIndex].beds,
                       baths: houseList[houseIndex].baths,
                       areaName: houseList[houseIndex].area,
+                      houseType: 'FLAT',
+                      address: 'Admiralty Way, Lekki Phase 1 ',
                     ),
                   );
                 },
