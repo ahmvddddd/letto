@@ -1,4 +1,4 @@
-class Images {
+class CustomImages {
   //avatar
   static const String avatarM1 = "assets/avatar/m1.jpg";
 
@@ -11,4 +11,8 @@ class Images {
   static const String onboarding1 = "assets/onboarding_images/onboarding_1.jpg";
   static const String onboarding2 = "assets/onboarding_images/onboarding_2.jpg";
   static const String onboarding3 = "assets/onboarding_images/onboarding_3.jpg";
+
+  //utilities
+  static const String apple = "assets/utilities/apple.png";
+  static const String google = "assets/utilities/google.png";
 }

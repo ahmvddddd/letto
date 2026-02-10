@@ -11,14 +11,16 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Favorites",
-                  style: Theme.of(context).textTheme.headlineSmall,),
-       actions: [
-        IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.notifications_outlined),
-              ),
-       ],       
+        title: Text(
+          "Favorites",
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_outlined),
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -46,22 +48,20 @@ class FavoritesScreen extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   itemCount: 3,
                   scrollPhysics: NeverScrollableScrollPhysics(),
-                  seperatorBuilder: (context, index) => const SizedBox(
-                    height: Sizes.spaceBtwItems,
-                  ),
-                  itemBuilder: (context, index) =>
-                   HouseCard(
-                      imageUrl: houseList[index].imageUrl,
-                      title: houseList[index].title,
-                      price: houseList[index].price,
-                      address: houseList[index].address,
-                      beds: houseList[index].beds,
-                      baths: houseList[index].baths,
-                      area: houseList[index].area,
+                  seperatorBuilder: (context, index) =>
+                      const SizedBox(height: Sizes.spaceBtwItems),
+                  itemBuilder: (context, index) => HouseCard(
+                    imageUrl: houseList[index].imageUrl,
+                    title: houseList[index].title,
+                    price: houseList[index].price,
+                    description: houseList[index].address,
+                    beds: houseList[index].beds,
+                    baths: houseList[index].baths,
+                    areaName: houseList[index].area,
                   ),
                 ),
-        
-                const SizedBox(height: Sizes.spaceBtwSections,)
+
+                const SizedBox(height: Sizes.spaceBtwSections),
               ],
             ),
           ),
@@ -70,5 +70,3 @@ class FavoritesScreen extends StatelessWidget {
     );
   }
 }
-
-

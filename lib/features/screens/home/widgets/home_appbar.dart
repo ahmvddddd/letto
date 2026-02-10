@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../utils/constants/custom_sizes.dart';
-import '../../../../utils/constants/images.dart';
+import '../../../../utils/constants/custom_images.dart';
 import '../../../../utils/helper/helper_functions.dart';
 import '../../../custom_widgets/containers/custom_container.dart';
 
@@ -21,16 +21,15 @@ class HomeAppBar extends StatelessWidget {
               width: screenHeight * 0.06,
               height: screenHeight * 0.06,
               radius: 100,
-              backgroundColor:
-                  dark
-                      ? Colors.white.withValues(alpha: 0.2)
-                      : Colors.black.withValues(alpha: 0.2),
+              backgroundColor: dark
+                  ? Colors.white.withValues(alpha: 0.2)
+                  : Colors.black.withValues(alpha: 0.2),
               padding: Sizes.xs,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Center(
                   child: Image.asset(
-                    Images.avatarM1,
+                    CustomImages.avatarM1,
                     fit: BoxFit.contain,
                     height: screenHeight * 0.06,
                   ),
@@ -41,21 +40,19 @@ class HomeAppBar extends StatelessWidget {
             const SizedBox(width: Sizes.sm),
             Column(
               children: [
-                Text('Hi, Ahmad',
-                style: Theme.of(context).textTheme.bodySmall,)
+                Text('Hi, Ahmad', style: Theme.of(context).textTheme.bodySmall),
               ],
-            )
+            ),
           ],
         ),
 
         //notifications
         CustomContainer(
-          backgroundColor:
-              dark
-                  ? Colors.white.withValues(alpha: 0.2)
-                  : Colors.black.withValues(alpha: 0.2),
-                  radius: 100,
-                  padding: Sizes.xs,
+          backgroundColor: dark
+              ? Colors.white.withValues(alpha: 0.2)
+              : Colors.black.withValues(alpha: 0.2),
+          radius: 100,
+          padding: Sizes.xs,
           child: Center(
             child: GestureDetector(
               onTap: () {},
@@ -75,10 +72,8 @@ class HomeAppBar extends StatelessWidget {
                       child: Center(
                         child: Text(
                           '3',
-                          style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            color: Colors.white,
-                            fontSize: 8,
-                          ),
+                          style: Theme.of(context).textTheme.labelSmall!
+                              .copyWith(color: Colors.white, fontSize: 8),
                         ),
                       ),
                     ),

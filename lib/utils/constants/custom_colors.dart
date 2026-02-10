@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 class CustomColors {
   CustomColors._();
   //App Basic Colors
-  static const Color primary = Color(0xFF00755e); //0xFF004040
+  static const Color primary = Color(0xFF5143EA); //0xFF004040
   static const Color secondary = Color(0xFFFFE24B);
-  static const Color accent = Color(0xFFb0c7ff);
+  static const Color accent = Color(0xFF14B8A6);
   static const Color secondaryGreen = Color(0xFF00755e);
   static const Color alternate = Color(0xFF8CAAD2);
+
+  static const backgroundLight = Color(0xFFF3F4F6);
+  static const backgroundDark = Color(0xFF121121);
+
+  static const borderLight = Color(0xFFF4E7E7);
   //D2B48C
   //5C523E
 

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../navigation_menu.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
-import '../../../utils/constants/images.dart';
+import '../../../utils/constants/custom_images.dart';
 import '../../../utils/helper/helper_functions.dart';
 
 // Riverpod state provider for current index
@@ -21,11 +21,17 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   final List<Map<String, String>> _pages = [
     {
-      'image': Images.onboarding1,
+      'image': CustomImages.onboarding1,
       'text': 'The best of apartments in your location',
     },
-    {'image': Images.onboarding2, 'text': 'Luxiriously furnished interior'},
-    {'image': Images.onboarding3, 'text': 'Enjoy the comfort you deserve'},
+    {
+      'image': CustomImages.onboarding2,
+      'text': 'Luxiriously furnished interior',
+    },
+    {
+      'image': CustomImages.onboarding3,
+      'text': 'Enjoy the comfort you deserve',
+    },
   ];
 
   void _nextPage() {
@@ -68,9 +74,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             child: PageView.builder(
               controller: _pageController,
               itemCount: _pages.length,
-              onPageChanged:
-                  (index) =>
-                      ref.read(currentIndexProvider.notifier).state = index,
+              onPageChanged: (index) =>
+                  ref.read(currentIndexProvider.notifier).state = index,
               itemBuilder: (context, index) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +87,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(Sizes.xl),
                           bottomRight: Radius.circular(Sizes.xl),
-                        )
+                        ),
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadiusGeometry.only(
@@ -104,16 +109,22 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         children: [
                           Text(
                             _pages[index]['text']!,
-                            style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: CustomColors.primary),
+                            style: Theme.of(context).textTheme.headlineSmall!
+                                .copyWith(color: CustomColors.primary),
                             textAlign: TextAlign.center,
                           ),
-      
+
                           const SizedBox(height: Sizes.sm),
-                          SizedBox(width: screenWidth * 0.80,
-                          child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
-                          softWrap: true,
-                          maxLines: 3,),)
+                          SizedBox(
+                            width: screenWidth * 0.80,
+                            child: Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                              style: Theme.of(context).textTheme.labelLarge!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                              softWrap: true,
+                              maxLines: 3,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -123,10 +134,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24.0,
-              vertical: 24,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

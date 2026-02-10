@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
+import '../../custom_widgets/containers/custom_searchbar.dart';
 import '../../custom_widgets/layout/custom_list_view.dart';
 import '../../models/house/house_model.dart';
 import '../apartment/apartment_screen.dart';
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final searchController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Column(
@@ -36,62 +38,50 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               // Search bar
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "Search...",
-                    prefixIcon: const Icon(Icons.search),
-                    filled: true,
-                    hintStyle: Theme.of(context).textTheme.labelSmall,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(Sizes.md),
-                      borderSide: BorderSide.none,
-                    ),
-                  ),
-                ),
+              CustomSearchBar(
+                onFilterPressed: () {},
+                onChanged: (value) {},
+                controller: searchController,
               ),
-      
+
               const SizedBox(height: 16),
-      
+
               CustomListView(
                 itemCount: 6, // 6 total items
                 scrollDirection: Axis.vertical,
                 scrollPhysics: const NeverScrollableScrollPhysics(),
-                seperatorBuilder:
-                    (context, index) =>
-                        const SizedBox(height: Sizes.spaceBtwItems),
-      
+                seperatorBuilder: (context, index) =>
+                    const SizedBox(height: Sizes.spaceBtwItems),
+
                 itemBuilder: (context, index) {
                   if (index == 2) {
                     return const StoryView();
                   }
-      
+
                   int houseIndex = index > 2 ? index - 1 : index;
-      
+
                   return GestureDetector(
-                    onTap:
-                        () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return ApartmentScreen(house: houseList[houseIndex]);
-                            },
-                          ),
-                        ),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ApartmentScreen(house: houseList[houseIndex]);
+                        },
+                      ),
+                    ),
                     child: HouseCard(
                       imageUrl: houseList[houseIndex].imageUrl,
                       title: houseList[houseIndex].title,
                       price: houseList[houseIndex].price,
-                      address: houseList[houseIndex].address,
+                      description: houseList[houseIndex].address,
                       beds: houseList[houseIndex].beds,
                       baths: houseList[houseIndex].baths,
-                      area: houseList[houseIndex].area,
+                      areaName: houseList[houseIndex].area,
                     ),
                   );
                 },
               ),
-      
+
               const SizedBox(height: Sizes.spaceBtwSections),
             ],
           ),

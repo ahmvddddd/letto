@@ -1,4 +1,4 @@
-import '../../../utils/constants/images.dart';
+import '../../../utils/constants/custom_images.dart';
 
 class HouseModel {
   final String imageUrl;
@@ -22,7 +22,7 @@ class HouseModel {
 
 final houseList = [
   HouseModel(
-    imageUrl: Images.duplex,
+    imageUrl: CustomImages.duplex,
     title: "Lakeshore Blvd West",
     price: "797,500",
     address: "70 Washington Square South, New York, NY 10012, United States",
@@ -31,7 +31,7 @@ final houseList = [
     area: "2000 sqft",
   ),
   HouseModel(
-    imageUrl: Images.apartment,
+    imageUrl: CustomImages.apartment,
     title: "Brooklyn Heights",
     price: "680,000",
     address: "12 Columbia Heights, Brooklyn, NY",
@@ -40,7 +40,7 @@ final houseList = [
     area: "1800 sqft",
   ),
   HouseModel(
-    imageUrl: Images.condominium,
+    imageUrl: CustomImages.condominium,
     title: "Manhattan View",
     price: "1,200,000",
     address: "5th Avenue, Manhattan, NY",
@@ -49,7 +49,7 @@ final houseList = [
     area: "1500 sqft",
   ),
   HouseModel(
-    imageUrl: Images.duplex,
+    imageUrl: CustomImages.duplex,
     title: "Soho Villa",
     price: "950,000",
     address: "75 Greene Street, Soho, NY",
@@ -58,7 +58,7 @@ final houseList = [
     area: "2500 sqft",
   ),
   HouseModel(
-    imageUrl: Images.apartment,
+    imageUrl: CustomImages.apartment,
     title: "Uptown Condo",
     price: "500,000",
     address: "Central Park West, NY",
@@ -67,7 +67,7 @@ final houseList = [
     area: "900 sqft",
   ),
   HouseModel(
-    imageUrl: Images.condominium,
+    imageUrl: CustomImages.condominium,
     title: "Harlem Duplex",
     price: "450,000",
     address: "Lenox Avenue, Harlem, NY",

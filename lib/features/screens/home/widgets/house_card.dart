@@ -9,20 +9,20 @@ class HouseCard extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String price;
-  final String address;
+  final String description;
   final int beds;
   final int baths;
-  final String area;
+  final String areaName;
 
   const HouseCard({
     super.key,
     required this.imageUrl,
     required this.title,
     required this.price,
-    required this.address,
+    required this.description,
     required this.beds,
     required this.baths,
-    required this.area,
+    required this.areaName,
   });
 
   @override
@@ -31,7 +31,9 @@ class HouseCard extends StatelessWidget {
 
     return CustomContainer(
       radius: Sizes.md,
-      backgroundColor: dark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.1),
+      backgroundColor: dark
+          ? Colors.white.withValues(alpha: 0.1)
+          : Colors.black.withValues(alpha: 0.1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -62,7 +64,9 @@ class HouseCard extends StatelessWidget {
                   ),
                   child: Text(
                     "Apartment",
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelMedium!.copyWith(color: Colors.white),
                   ),
                 ),
               ),
@@ -70,46 +74,61 @@ class HouseCard extends StatelessWidget {
                 top: 10,
                 right: 10,
                 child: CircleAvatar(
-                  radius: 20,
+                  radius: 16,
                   backgroundColor: Colors.white,
-                  child: Icon(Icons.favorite_border, color: Colors.grey[700], size: Sizes.iconM,),
+                  child: Icon(
+                    Icons.favorite_border,
+                    color: Colors.grey[700],
+                    size: Sizes.iconSm,
+                  ),
                 ),
               ),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(Sizes.sm),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Icon(Icons.location_on, size: Sizes.iconSm, color: Colors.red),
+                    Icon(
+                      Icons.location_on,
+                      size: Sizes.iconSm,
+                      color: Colors.red,
+                    ),
                     const SizedBox(width: Sizes.xs),
                     SizedBox(
                       width: 200,
                       child: Text(
                         title,
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(overflow: TextOverflow.ellipsis)
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: Sizes.xs),
                 Text(
-                  address,
-                  style: Theme.of(context).textTheme.labelMedium
+                  description,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: Sizes.spaceBtwItems),
                 Row(
                   children: [
                     Text(
                       '₦$price',
-                      style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontFamily: 'Inter'),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall!.copyWith(fontFamily: 'Inter'),
                     ),
 
                     const SizedBox(width: Sizes.xs),
-                    Text('/ day', style : Theme.of(context).textTheme.bodyMedium)
+                    Text(
+                      '/ day',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ],
                 ),
                 const SizedBox(height: Sizes.spaceBtwItems),
@@ -118,7 +137,10 @@ class HouseCard extends StatelessWidget {
                   children: [
                     HouseInfo(icon: Icons.bed, text: "$beds Beds"),
                     HouseInfo(icon: Icons.bathtub, text: "$baths Baths"),
-                    HouseInfo(icon: Icons.square_foot, text: area),
+                    Text(
+                      areaName,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ],
                 ),
               ],

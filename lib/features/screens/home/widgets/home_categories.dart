@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../utils/constants/custom_sizes.dart';
-import '../../../../utils/constants/images.dart';
+import '../../../../utils/constants/custom_images.dart';
 import '../../../../utils/helper/helper_functions.dart';
 import '../../../custom_widgets/containers/custom_container.dart';
 import '../../../custom_widgets/layout/custom_list_view.dart';
@@ -13,9 +13,9 @@ class HomeCategories extends StatelessWidget {
     final dark = HelperFunctions.isDarkMode(context);
     double screenHeight = MediaQuery.of(context).size.height;
     final List<String> backgroundImage = [
-      Images.apartment,
-      Images.condominium,
-      Images.duplex,
+      CustomImages.apartment,
+      CustomImages.condominium,
+      CustomImages.duplex,
     ];
     final List<String> categories = ["Apartment", "Condominium", "Duplex"];
     return CustomListView(
@@ -28,10 +28,9 @@ class HomeCategories extends StatelessWidget {
       itemBuilder: (context, index) {
         return CustomContainer(
           height: screenHeight * 0.05,
-          backgroundColor:
-              dark
-                  ? Colors.white.withValues(alpha: 0.1)
-                  : Colors.black.withValues(alpha: 0.1),
+          backgroundColor: dark
+              ? Colors.white.withValues(alpha: 0.1)
+              : Colors.black.withValues(alpha: 0.1),
           radius: 50,
           padding: Sizes.xs,
           // boxShadow: [
@@ -49,7 +48,12 @@ class HomeCategories extends StatelessWidget {
               const SizedBox(width: Sizes.xs),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
-                child: Text(categories[index], style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 10)),
+                child: Text(
+                  categories[index],
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelSmall!.copyWith(fontSize: 10),
+                ),
               ),
             ],
           ),

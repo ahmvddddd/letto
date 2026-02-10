@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import '../../../utils/helper/helper_functions.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
@@ -16,20 +14,23 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = HelperFunctions.isDarkMode(context);
     double screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
       width: screenWidth * 0.90,
-      child: TextField(
-        controller: controller,
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(50),
-    ),
-          prefixIcon: Icon(Iconsax.search_favorite, color: dark ? Colors.white.withValues(alpha: 0.5) : Colors.black.withValues(alpha: 0.5)),
-          hintText: 'search for houses',
-          hintStyle: Theme.of(context).textTheme.labelSmall
+      height: 45,
+      child: Center(
+        child: TextField(
+          controller: controller,
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            filled: true,
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            hintText: 'Search...',
+            hintStyle: Theme.of(context).textTheme.labelMedium,
+          ),
         ),
       ),
     );
