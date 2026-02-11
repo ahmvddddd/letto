@@ -21,79 +21,76 @@ class RealtorCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final dark = HelperFunctions.isDarkMode(context);
     final isExpanded = ref.read(realtorDeatailsProvider);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Sizes.spaceBtwItems),
-      child: CustomContainer(
-        padding: Sizes.sm,
-        backgroundColor:
-            dark
-                ? Colors.white.withValues(alpha: 0.1)
-                : Colors.black.withValues(alpha: 0.1),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      radius: 20,
-                      child: Icon(
-                        Icons.person,
-                        size: Sizes.iconMd,
-                        color: Colors.white,
-                      ),
-                    ),
-
-                    const SizedBox(width: Sizes.md),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              displayName,
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                            const SizedBox(width: 2),
-                            Icon(Icons.verified, color: Colors.blue, size: 12),
-                          ],
-                        ),
-                        Text(
-                          role,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: Icon(
-                    isExpanded
-                        ? Icons.keyboard_arrow_up
-                        : Icons.keyboard_arrow_down,
-                    size: Sizes.iconMd,
-                  ),
-                  onPressed: () {
-                    ref.read(realtorDeatailsProvider.notifier).state =
-                        !isExpanded;
-                  },
-                ),
-              ],
-            ),
-            
-            if (isExpanded) ...[
-              Column(
+    return CustomContainer(
+      padding: Sizes.sm,
+      backgroundColor:
+          dark
+              ? Colors.white.withValues(alpha: 0.1)
+              : Colors.black.withValues(alpha: 0.1),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
                 children: [
-                  const SizedBox(height: Sizes.sm),
-                  Text(details, style: Theme.of(context).textTheme.bodyMedium),
+                  CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    radius: 20,
+                    child: Icon(
+                      Icons.person,
+                      size: Sizes.iconMd,
+                      color: Colors.white,
+                    ),
+                  ),
+    
+                  const SizedBox(width: Sizes.md),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            displayName,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          const SizedBox(width: 2),
+                          Icon(Icons.verified, color: Colors.blue, size: 12),
+                        ],
+                      ),
+                      Text(
+                        role,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
+                  ),
                 ],
               ),
+              IconButton(
+                icon: Icon(
+                  isExpanded
+                      ? Icons.keyboard_arrow_up
+                      : Icons.keyboard_arrow_down,
+                  size: Sizes.iconMd,
+                ),
+                onPressed: () {
+                  ref.read(realtorDeatailsProvider.notifier).state =
+                      !isExpanded;
+                },
+              ),
             ],
+          ),
+          
+          if (isExpanded) ...[
+            Column(
+              children: [
+                const SizedBox(height: Sizes.sm),
+                Text(details, style: Theme.of(context).textTheme.bodyMedium),
+              ],
+            ),
           ],
-        ),
+        ],
       ),
     );
   }

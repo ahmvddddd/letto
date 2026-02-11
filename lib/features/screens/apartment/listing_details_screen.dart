@@ -1,12 +1,23 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import '../../../utils/constants/custom_colors.dart';
+import '../../../utils/constants/custom_images.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_container.dart';
+import 'widgets/apartment_map.dart';
+import 'widgets/realtor_card.dart';
 
-class ListingDetailsScreen extends StatelessWidget {
+class ListingDetailsScreen extends StatefulWidget {
   const ListingDetailsScreen({super.key});
+
+  @override
+  State<ListingDetailsScreen> createState() => _ListingDetailsScreenState();
+}
+
+class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
+  LatLng currentLatLng = LatLng(9.0117, 7.5080);
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
@@ -25,8 +36,9 @@ class ListingDetailsScreen extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.45,
                       width: double.infinity,
-                      child: Image.network(
-                        "https://lh3.googleusercontent.com/aida-public/AB6AXuCrod2HbOF15jDXFTYiPp_aTq1VgpBqt8oz5zn31oZjuheFfUM7x7RThp-E01dIus2B-n8njBmzViyZgdbv5pq6jyvFDqj9nJxkvac2vrZ-ncyqkpThtyxBeWGMotGCTM8rC6GkXtk6HV8MyOdwbI6hD-owaC-YfY5qkUXA7cLtuakcaCAIZ3Wbs4YkwS_mD-7TO7zhMKUCyPdyC0xf-3o-lkzIvN9IFQ16S0iTKWhtVFzzzL5BzZ1XOv_FHAXuVOujpenHIqa0zwc",
+                      child: Image.asset(
+                        CustomImages.duplex,
+                        // "https://lh3.googleusercontent.com/aida-public/AB6AXuCrod2HbOF15jDXFTYiPp_aTq1VgpBqt8oz5zn31oZjuheFfUM7x7RThp-E01dIus2B-n8njBmzViyZgdbv5pq6jyvFDqj9nJxkvac2vrZ-ncyqkpThtyxBeWGMotGCTM8rC6GkXtk6HV8MyOdwbI6hD-owaC-YfY5qkUXA7cLtuakcaCAIZ3Wbs4YkwS_mD-7TO7zhMKUCyPdyC0xf-3o-lkzIvN9IFQ16S0iTKWhtVFzzzL5BzZ1XOv_FHAXuVOujpenHIqa0zwc",
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -49,15 +61,20 @@ class ListingDetailsScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          _circleButton(
-                            icon: Icons.arrow_back_ios_new,
-                            onTap: () => Navigator.pop(context),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.arrow_back_ios_new),
                           ),
                           Row(
                             children: [
-                              _circleButton(icon: Icons.share),
                               const SizedBox(width: 12),
-                              _circleButton(icon: Icons.favorite_border),
+                              IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.favorite,
+                            )
+                          )
                             ],
                           ),
                         ],
@@ -93,23 +110,10 @@ class ListingDetailsScreen extends StatelessWidget {
                       /// TITLE
                       Text(
                         "Cozy 2-Bedroom Apartment",
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
 
                       const SizedBox(height: Sizes.sm),
-
-                      /// LOCATION
-                      // Row(
-                      //   children: const [
-                      //     Icon(Icons.location_on,
-                      //         size: 16, color: Colors.red),
-                      //     SizedBox(width: 4),
-                      //     Text(
-                      //       "Lekki Phase 1, Lagos",
-                      //       style: TextStyle(color: Colors.grey),
-                      //     ),
-                      //   ],
-                      // ),
                       Row(
                         children: [
                           const Icon(
@@ -117,7 +121,7 @@ class ListingDetailsScreen extends StatelessWidget {
                             size: 14,
                             color: Colors.red,
                           ),
-                          const SizedBox(width: 4),
+                          const SizedBox(width: Sizes.xs),
 
                           Expanded(
                             child: RichText(
@@ -129,8 +133,7 @@ class ListingDetailsScreen extends StatelessWidget {
                                     text: 'Admiralty Way Lekki Phase 1',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .labelSmall!
-                                        .copyWith(color: Colors.grey),
+                                        .labelMedium,
                                   ),
                                   const TextSpan(text: ' • '),
                                   TextSpan(
@@ -194,7 +197,7 @@ class ListingDetailsScreen extends StatelessWidget {
                       /// DESCRIPTION
                       Text(
                         "Description",
-                        style: Theme.of(context).textTheme.bodyMedium
+                        style: Theme.of(context).textTheme.titleSmall
                       ),
                       const SizedBox(height: Sizes.sm),
                       Text(
@@ -209,9 +212,25 @@ class ListingDetailsScreen extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 32),
+                      //Reviews
+                      Text(
+                        "Reviews",
+                        style: Theme.of(context).textTheme.titleSmall
+                      ),
+
+                      //realtor card
+                      const SizedBox(height: Sizes.sm,),
+                      RealtorCard(
+                        displayName: 'John Doe',
+                        role: 'Agent',
+                        details:
+                        'This realtor has extensive experience in property sales and client negotiations.',
+                      ),
+
+                      const SizedBox(height: Sizes.spaceBtwItems),
 
                       // MAP
+                      ApartmentMap(currentLatLng: currentLatLng),
                     ],
                   ),
                 ),
@@ -220,21 +239,6 @@ class ListingDetailsScreen extends StatelessWidget {
           ),
 
          ],
-      ),
-    );
-  }
-
-  Widget _circleButton({required IconData icon, VoidCallback? onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 40,
-        width: 40,
-        decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.9),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(icon, size: 18),
       ),
     );
   }
