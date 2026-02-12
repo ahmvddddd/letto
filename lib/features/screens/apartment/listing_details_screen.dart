@@ -8,6 +8,7 @@ import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_container.dart';
 import 'widgets/apartment_map.dart';
 import 'widgets/realtor_card.dart';
+import 'widgets/reviews_container.dart';
 
 class ListingDetailsScreen extends StatefulWidget {
   const ListingDetailsScreen({super.key});
@@ -55,26 +56,31 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
 
                     /// TOP ACTIONS
                     Positioned(
-                      top: 50,
+                      top: 40,
                       left: 16,
                       right: 16,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
+                                style: IconButton.styleFrom(
+                                  backgroundColor: CustomColors.light
+                                ),
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(Icons.arrow_back_ios_new),
+                            icon: Icon(Icons.arrow_back, color:  CustomColors.backgroundDark,),
                           ),
                           Row(
                             children: [
                               const SizedBox(width: 12),
                               IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.favorite,
-                            )
-                          )
+                                style: IconButton.styleFrom(
+                                  backgroundColor: CustomColors.light
+                                ),
+                                onPressed: () {},
+                                icon: Icon(Icons.favorite, color: CustomColors.backgroundDark),
+                              ),
                             ],
                           ),
                         ],
@@ -99,7 +105,7 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                   transform: Matrix4.translationValues(0, -24, 0),
                   padding: const EdgeInsets.fromLTRB(20, 32, 20, 0),
                   decoration: BoxDecoration(
-                    color: dark ? Colors.black : Colors.white,
+                    color: dark ? CustomColors.backgroundDark : CustomColors.backgroundLight,
                     borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(32),
                     ),
@@ -131,9 +137,9 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                                 children: [
                                   TextSpan(
                                     text: 'Admiralty Way Lekki Phase 1',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelMedium,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.labelMedium,
                                   ),
                                   const TextSpan(text: ' • '),
                                   TextSpan(
@@ -197,12 +203,12 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                       /// DESCRIPTION
                       Text(
                         "Description",
-                        style: Theme.of(context).textTheme.titleSmall
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                       const SizedBox(height: Sizes.sm),
                       Text(
                         "Recently renovated with modern finishings, featuring an open-plan kitchen and premium tiling. This apartment offers a perfect blend of luxury and comfort, situated in the heart of Lekki Phase 1 with 24/7 security and steady power supply.",
-                        style: Theme.of(context).textTheme.labelMedium,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                       TextButton(
                         onPressed: () {},
@@ -213,18 +219,16 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                       ),
 
                       //Reviews
-                      Text(
-                        "Reviews",
-                        style: Theme.of(context).textTheme.titleSmall
-                      ),
+                      ReviewsContainer(onTap: () {}),
 
                       //realtor card
-                      const SizedBox(height: Sizes.sm,),
+                      const SizedBox(height: Sizes.sm),
                       RealtorCard(
+                        onTap: () {},
                         displayName: 'John Doe',
                         role: 'Agent',
                         details:
-                        'This realtor has extensive experience in property sales and client negotiations.',
+                            'This realtor has extensive experience in property sales and client negotiations.',
                       ),
 
                       const SizedBox(height: Sizes.spaceBtwItems),
@@ -237,8 +241,7 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
               ],
             ),
           ),
-
-         ],
+        ],
       ),
     );
   }

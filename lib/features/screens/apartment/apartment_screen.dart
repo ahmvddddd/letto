@@ -50,6 +50,7 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
 
                   const SizedBox(height: Sizes.spaceBtwItems),
                   RealtorCard(
+                    onTap: () {},
                     displayName: 'John Doe',
                     role: 'Agent',
                     details:

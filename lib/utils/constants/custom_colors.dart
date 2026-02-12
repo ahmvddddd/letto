@@ -9,8 +9,8 @@ class CustomColors {
   static const Color secondaryGreen = Color(0xFF00755e);
   static const Color alternate = Color(0xFF8CAAD2);
 
-  static const backgroundLight = Color(0xFFF3F4F6);
-  static const backgroundDark = Color(0xFF121121);
+  static const backgroundLight = Color(0xFFF0F4FF);
+  static const backgroundDark = Colors.black;
 
   static const borderLight = Color(0xFFF4E7E7);
   //D2B48C
@@ -48,7 +48,7 @@ class CustomColors {
   static const Color textWhite = Colors.white;
 
   //Background colors
-  static const Color light = Color(0xFFF6F6F6);
+  static const Color light = Colors.white;
   static const Color dark = Color(0xFF121212);
   static const Color primaryBackground = Color(0xFFF3F5FF);
 

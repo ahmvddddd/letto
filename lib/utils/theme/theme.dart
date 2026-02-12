@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/custom_colors.dart';
 import 'custom_theme/custom_appbar_theme.dart';
 import 'custom_theme/custom_bottom_sheet_theme.dart';
 import 'custom_theme/custom_elevated_button_theme.dart';
@@ -13,7 +14,7 @@ class CustomAppTheme {
     fontFamily: 'Aeonik',
     brightness: Brightness.light,
     primaryColor: Colors.grey,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: CustomColors.backgroundLight,
     textTheme: CustomTextTheme.lightTextTheme,
     appBarTheme: CustomAppbarTheme.lightAppBarTheme,
     elevatedButtonTheme: CustomElevatedButtonTheme.LightElevatedButtonTheme,
@@ -26,7 +27,7 @@ class CustomAppTheme {
     fontFamily: 'Aeonik',
     brightness: Brightness.dark,
     primaryColor: Colors.grey,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: CustomColors.backgroundDark,
     textTheme: CustomTextTheme.darkTextTheme,
     appBarTheme: CustomAppbarTheme.darkAppBarTheme,
     elevatedButtonTheme: CustomElevatedButtonTheme.darkElevatedButtonTheme,
