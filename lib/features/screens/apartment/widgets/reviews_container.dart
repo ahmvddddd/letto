@@ -14,7 +14,9 @@ class ReviewsContainer extends StatelessWidget {
     final dark = HelperFunctions.isDarkMode(context);
     return InkWell(
       highlightColor: CustomColors.primary,
-      onTap: () {},
+      onTap: () {
+        // navigate to reviews screen
+      },
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
