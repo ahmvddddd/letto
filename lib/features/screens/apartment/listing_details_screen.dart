@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import '../../../utils/constants/custom_colors.dart';
@@ -6,7 +5,7 @@ import '../../../utils/constants/custom_images.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_container.dart';
-import 'widgets/apartment_map.dart';
+// import 'widgets/apartment_map.dart';
 import 'widgets/realtor_card.dart';
 import 'widgets/reviews_container.dart';
 
@@ -234,7 +233,7 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                       const SizedBox(height: Sizes.spaceBtwItems),
 
                       // MAP
-                      ApartmentMap(currentLatLng: currentLatLng),
+                      // ApartmentMap(currentLatLng: currentLatLng),
                     ],
                   ),
                 ),
