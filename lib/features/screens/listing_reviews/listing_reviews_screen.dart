@@ -22,40 +22,40 @@ class ListingReviewsScreen extends StatelessWidget {
         child: Column(
           children: [
             Column(
-            children: [
-              ReviewCard(
-                name: "Chidi Okoro",
-                date: "2 days ago • Verified Resident",
-                rating: 5,
-                text:
-                    "The apartment is exactly as pictured. Great water supply and the landlord is very responsive. Highly recommended!",
-              ),
-              ReviewCard(
-                name: "Amina Bello",
-                date: "1 week ago • Verified Resident",
-                rating: 4,
-                text:
-                    "Lovely space, very quiet neighborhood. Parking is a bit tight but overall wonderful.",
-              ),
-              ReviewCard(
-                name: "Emeka Nwosu",
-                date: "2 weeks ago",
-                rating: 5,
-                text:
-                    "Been living here for 3 months now. The solar inverter system is a life saver!",
-              ),
-              ReviewCard(
-                name: "Fatima Yusuf",
-                date: "1 month ago",
-                rating: 3,
-                text:
-                    "Decent place for the price. The gym is smaller than expected.",
-              ),
-              const SizedBox(height: 120),
-            ],
-                          ),],
+              children: [
+                ReviewCard(
+                  name: "Chidi Okoro",
+                  date: "2 days ago • Verified Resident",
+                  rating: 5,
+                  comment:
+                      "The apartment is exactly as pictured. Great water supply and the landlord is very responsive. Highly recommended!",
+                ),
+                ReviewCard(
+                  name: "Amina Bello",
+                  date: "1 week ago • Verified Resident",
+                  rating: 4,
+                  comment:
+                      "Lovely space, very quiet neighborhood. Parking is a bit tight but overall wonderful.",
+                ),
+                ReviewCard(
+                  name: "Emeka Nwosu",
+                  date: "2 weeks ago",
+                  rating: 5,
+                  comment:
+                      "Been living here for 3 months now. The solar inverter system is a life saver!",
+                ),
+                ReviewCard(
+                  name: "Fatima Yusuf",
+                  date: "1 month ago",
+                  rating: 3,
+                  comment:
+                      "Decent place for the price. The gym is smaller than expected.",
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
-  } 
+  }
 }

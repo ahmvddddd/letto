@@ -4,15 +4,15 @@ class ReviewCard extends StatelessWidget {
   final String name;
   final String date;
   final int rating;
-  final String text;
+  final String comment;
 
   const ReviewCard({
     super.key,
     required this.name,
     required this.date,
     required this.rating,
-    required this.text,
-    });
+    required this.comment,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class ReviewCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(name, style: Theme.of(context).textTheme.titleMedium),
                 Row(
                   children: List.generate(
                     5,
@@ -47,7 +47,7 @@ class ReviewCard extends StatelessWidget {
               style: const TextStyle(fontSize: 12, color: Colors.grey),
             ),
             const SizedBox(height: 10),
-            Text(text),
+            Text(comment, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),
