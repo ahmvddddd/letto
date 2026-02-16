@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../../utils/constants/custom_colors.dart';
 import '../../../../utils/constants/custom_sizes.dart';
 import '../../../../utils/helper/helper_functions.dart';
-import '../../listing_reviews/listing_reviews_screen.dart';
 
 class ReviewsContainer extends StatelessWidget {
   const ReviewsContainer({super.key, required this.onTap});
@@ -15,12 +13,7 @@ class ReviewsContainer extends StatelessWidget {
     final dark = HelperFunctions.isDarkMode(context);
     return InkWell(
       highlightColor: CustomColors.primary,
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ListingReviewsScreen()),
-        );
-      },
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(

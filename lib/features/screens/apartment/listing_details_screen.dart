@@ -6,6 +6,8 @@ import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_container.dart';
 // import 'widgets/apartment_map.dart';
+import '../agent_reviews/agent_reviews_screen.dart';
+import '../listing_reviews/listing_reviews_screen.dart';
 import 'widgets/realtor_card.dart';
 import 'widgets/reviews_container.dart';
 
@@ -62,23 +64,29 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                                style: IconButton.styleFrom(
-                                  backgroundColor: CustomColors.light
-                                ),
+                            style: IconButton.styleFrom(
+                              backgroundColor: CustomColors.light,
+                            ),
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(Icons.arrow_back, color:  CustomColors.backgroundDark,),
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: CustomColors.backgroundDark,
+                            ),
                           ),
                           Row(
                             children: [
                               const SizedBox(width: 12),
                               IconButton(
                                 style: IconButton.styleFrom(
-                                  backgroundColor: CustomColors.light
+                                  backgroundColor: CustomColors.light,
                                 ),
                                 onPressed: () {},
-                                icon: Icon(Icons.favorite, color: CustomColors.backgroundDark),
+                                icon: Icon(
+                                  Icons.favorite,
+                                  color: CustomColors.backgroundDark,
+                                ),
                               ),
                             ],
                           ),
@@ -104,7 +112,9 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                   transform: Matrix4.translationValues(0, -24, 0),
                   padding: const EdgeInsets.fromLTRB(20, 32, 20, 0),
                   decoration: BoxDecoration(
-                    color: dark ? CustomColors.backgroundDark : CustomColors.backgroundLight,
+                    color: dark
+                        ? CustomColors.backgroundDark
+                        : CustomColors.backgroundLight,
                     borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(32),
                     ),
@@ -218,12 +228,32 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                       ),
 
                       //Reviews
-                      ReviewsContainer(onTap: () {}),
+                      ReviewsContainer(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ListingReviewsScreen();
+                              },
+                            ),
+                          );
+                        },
+                      ),
 
                       //realtor card
                       const SizedBox(height: Sizes.sm),
                       RealtorCard(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return AgentReviewsScreen();
+                              },
+                            ),
+                          );
+                        },
                         displayName: 'John Doe',
                         role: 'Agent',
                         details:
