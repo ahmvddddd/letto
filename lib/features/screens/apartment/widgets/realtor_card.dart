@@ -25,60 +25,58 @@ class RealtorCard extends ConsumerWidget {
       onTap: onTap,
       highlightColor: CustomColors.primary,
       child: CustomContainer(
+          padding: Sizes.spaceBtwItems,
         backgroundColor: dark
             ? CustomColors.dark
             : CustomColors.light,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Sizes.spaceBtwItems, vertical: Sizes.xs),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.grey,
-                        radius: Sizes.md,
-                        child: Icon(
-                          Icons.person,
-                          size: Sizes.iconMd,
-                          color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      radius: Sizes.md,
+                      child: Icon(
+                        Icons.person,
+                        size: Sizes.iconMd,
+                        color: Colors.white,
+                      ),
+                    ),
+        
+                    const SizedBox(width: Sizes.md),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              displayName,
+                              style: Theme.of(context).textTheme.titleSmall,
+                            ),
+                            const SizedBox(width: Sizes.xs),
+                            Icon(
+                              Icons.verified,
+                              size: Sizes.iconSm,
+                              color: CustomColors.success,
+                            ),
+                          ],
                         ),
-                      ),
-          
-                      const SizedBox(width: Sizes.md),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                displayName,
-                                style: Theme.of(context).textTheme.titleSmall,
-                              ),
-                              const SizedBox(width: Sizes.xs),
-                              Icon(
-                                Icons.verified,
-                                size: Sizes.iconSm,
-                                color: CustomColors.success,
-                              ),
-                            ],
-                          ),
-                          Text(
-                            role,
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Icon(Icons.arrow_forward_ios, size: Sizes.iconSm),
-                ],
-              ),
-            ],
-          ),
+                        Text(
+                          role,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Icon(Icons.arrow_forward_ios, size: Sizes.iconSm),
+              ],
+            ),
+          ],
         ),
       ),
     );

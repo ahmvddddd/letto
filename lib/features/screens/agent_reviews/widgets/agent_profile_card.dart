@@ -30,7 +30,7 @@ class AgentProfileCard extends StatelessWidget {
                   child: Icon(
                     Icons.person,
                     color: Colors.white,
-                    size: Sizes.iconM,
+                    size: Sizes.iconLg,
                   ),
                 ),
               ),
@@ -40,7 +40,7 @@ class AgentProfileCard extends StatelessWidget {
                 child: Icon(
                   Icons.verified,
                   color: CustomColors.success,
-                  size: Sizes.iconXs,
+                  size: Sizes.iconMd,
                 ),
               ),
             ],
@@ -49,14 +49,18 @@ class AgentProfileCard extends StatelessWidget {
           Text(name, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: Sizes.xs),
           Text(userType, style: TextStyle(color: Colors.grey)),
-          const SizedBox(height: Sizes.spaceBtwItems),
+          const SizedBox(height: Sizes.sm),
           TextButton(
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero
+            ),
             onPressed: onPressed,
             child: Text(
               phoneNumber,
               style: Theme.of(
                 context,
-              ).textTheme.bodyMedium!.copyWith(color: CustomColors.primary),
+              ).textTheme.headlineSmall!.copyWith(
+                color: CustomColors.primary),
             ),
           ),
         ],
