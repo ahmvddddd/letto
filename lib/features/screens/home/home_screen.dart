@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
+import '../../../utils/helper/helper_functions.dart';
 import '../../custom_widgets/containers/custom_searchbar.dart';
 import '../../custom_widgets/layout/custom_list_view.dart';
 import '../../models/house/house_model.dart';
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
+    final dark = HelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
         title: Column(
@@ -28,7 +30,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.notifications_outlined),
+            icon: Icon(dark ? Icons.dark_mode : Icons.dark_mode_outlined),
           ),
         ],
       ),
