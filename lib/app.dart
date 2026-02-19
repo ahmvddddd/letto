@@ -5,6 +5,7 @@ import 'features/custom_navbar.dart';
 import 'features/screens/auth/auth_screen.dart';
 import 'features/screens/favorite/favorites_screen.dart';
 import 'features/screens/home/home_screen.dart';
+import 'features/screens/threads/threads_screen.dart';
 import 'utils/theme/theme.dart';
 
 class App extends ConsumerWidget {
@@ -17,6 +18,7 @@ class App extends ConsumerWidget {
     final screens = [
       const HomeScreen(),
       const FavoritesScreen(),
+      const ThreadsScreen(),
       const AuthScreen(),
     ];
 
