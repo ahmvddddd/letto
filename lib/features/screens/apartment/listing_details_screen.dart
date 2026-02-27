@@ -227,7 +227,31 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                         ),
                       ),
 
-                      //Reviews
+                      
+
+                      //realtor card
+                      const SizedBox(height: Sizes.sm),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RealtorCard(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return AgentReviewsScreen();
+                                  },
+                                ),
+                              );
+                            },
+                            displayName: 'John Doe',
+                            role: 'Agent',
+                            details:
+                                'This realtor has extensive experience in property sales and client negotiations.',
+                          ),
+
+                          //Reviews
                       ReviewsContainer(
                         onTap: () {
                           Navigator.push(
@@ -240,24 +264,7 @@ class _ListingDetailsScreenState extends State<ListingDetailsScreen> {
                           );
                         },
                       ),
-
-                      //realtor card
-                      const SizedBox(height: Sizes.sm),
-                      RealtorCard(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return AgentReviewsScreen();
-                              },
-                            ),
-                          );
-                        },
-                        displayName: 'John Doe',
-                        role: 'Agent',
-                        details:
-                            'This realtor has extensive experience in property sales and client negotiations.',
+                        ],
                       ),
 
                       const SizedBox(height: Sizes.spaceBtwItems),
