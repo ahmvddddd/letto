@@ -35,7 +35,7 @@ class ThreadsScreen extends StatelessWidget {
             ListView(
               shrinkWrap: true,
               padding: EdgeInsets.zero,
-              children: const [
+              children: [
                 ThreadCard(
                   name: "Chidi O.",
                   title: "Best areas in Yaba?",

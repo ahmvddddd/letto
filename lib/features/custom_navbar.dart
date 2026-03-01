@@ -67,9 +67,9 @@ class CustomBottomNavBar extends ConsumerWidget {
                   label: 'Favorites',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Iconsax.menu_board),
+                  icon: Icon(Iconsax.document),
                   activeIcon: Icon(
-                    Icons.favorite,
+                    Iconsax.document_copy,
                     color: CustomColors.primary,
                     size: Sizes.iconM,
                   ),
