@@ -58,7 +58,7 @@ class CustomBottomNavBar extends ConsumerWidget {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite_border),
+                  icon: Icon(Icons.favorite_border, size: Sizes.iconM,),
                   activeIcon: Icon(
                     Icons.favorite,
                     color: CustomColors.primary,
@@ -67,13 +67,13 @@ class CustomBottomNavBar extends ConsumerWidget {
                   label: 'Favorites',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Iconsax.document),
+                  icon: Icon(Icons.post_add_outlined, size: Sizes.iconM,),
                   activeIcon: Icon(
-                    Iconsax.document_copy,
+                    Icons.post_add,
                     color: CustomColors.primary,
                     size: Sizes.iconM,
                   ),
-                  label: 'Favorites',
+                  label: 'Threads',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Iconsax.user, size: Sizes.iconM),

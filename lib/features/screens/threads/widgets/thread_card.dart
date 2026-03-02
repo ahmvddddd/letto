@@ -46,7 +46,7 @@ class ThreadCard extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(Sizes.cardRadiusLg),
                     ),
-                    padding: const EdgeInsets.all(2)
+                    padding: EdgeInsets.zero
                   ),
                   onPressed: () {
                     Navigator.push(
