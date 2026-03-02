@@ -41,13 +41,6 @@ class ThreadCard extends StatelessWidget {
               children: [
                 Text(name, style: Theme.of(context).textTheme.titleMedium),
                 TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: CustomColors.error.withValues(alpha: 0.2),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(Sizes.cardRadiusLg),
-                    ),
-                    padding: EdgeInsets.zero
-                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
