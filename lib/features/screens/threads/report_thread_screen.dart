@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helper/helper_functions.dart';
+import '../../custom_widgets/buttons/custom_button.dart';
 import '../../custom_widgets/containers/custom_appbar.dart';
 import '../../custom_widgets/containers/custom_container.dart';
 import 'widgets/report_thread_option.dart';
@@ -38,6 +38,15 @@ class _ReportThreadScreenState extends State<ReportThreadScreen> {
         centerTitle: true,
         showBackArrow: true,
       ),
+      bottomNavigationBar: CustomButton(
+        disabled: true,
+        child: Text(
+          'Submit',
+          style: Theme.of(
+            context,
+          ).textTheme.labelMedium!.copyWith(color: Colors.white),
+        ),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(Sizes.spaceBtwItems),
         child: Column(
@@ -50,14 +59,18 @@ class _ReportThreadScreenState extends State<ReportThreadScreen> {
                   children: [
                     const SizedBox(height: Sizes.sm),
                     Text(
-                      "Please select a reason for reporting this post to our moderation team.",
-                      style: Theme.of(context).textTheme.titleMedium,
+                      "Please select a reason for reporting this thread to our moderation team.",
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     const SizedBox(height: Sizes.spaceBtwItems),
 
                     // RADIO OPTIONS
                     ...reasons.map(
-                      (reason) => ReportThreadOption(reason: reason),
+                      (reason) => ReportThreadOption(
+                        groupValue: reason,
+                        onChanged: (value) {},
+                        reason: reason,
+                      ),
                     ),
 
                     const SizedBox(height: 24),

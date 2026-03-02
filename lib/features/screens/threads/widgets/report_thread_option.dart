@@ -1,56 +1,52 @@
 import 'package:flutter/material.dart';
-
 import '../../../../utils/constants/custom_colors.dart';
 import '../../../../utils/constants/custom_sizes.dart';
 import '../../../../utils/helper/helper_functions.dart';
 
-class ReportThreadOption extends StatefulWidget {
+class ReportThreadOption extends StatelessWidget {
   final String reason;
+  final String? groupValue;
+  final ValueChanged<String?> onChanged;
+
   const ReportThreadOption({
     super.key,
     required this.reason,
+    required this.groupValue,
+    required this.onChanged,
   });
 
   @override
-  State<ReportThreadOption> createState() => _ReportThreadOptionState();
-}
-
-class _ReportThreadOptionState extends State<ReportThreadOption> {
-  String selectedReason = '';
-  @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
+
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: Sizes.sm),
       child: InkWell(
         borderRadius: BorderRadius.circular(Sizes.cardRadiusLg),
-        onTap: () {
-          setState(() {
-            selectedReason = widget.reason;
-          });
-        },
+        onTap: () => onChanged(reason),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          padding: const EdgeInsets.all(Sizes.sm),
           decoration: BoxDecoration(
             color: dark ? CustomColors.dark : CustomColors.light,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: dark ? Colors.grey.shade800 : const Color(0xFFF4E7E7),
+              color: dark
+                  ? Colors.grey.shade800
+                  : const Color(0xFFF4E7E7),
             ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(widget.reason, style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                reason,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
               Radio<String>(
-                value: widget.reason,
-                groupValue: selectedReason,
+                value: reason,
+                groupValue: groupValue,
                 activeColor: CustomColors.primary,
-                onChanged: (value) {
-                  setState(() {
-                    selectedReason = value!;
-                  });
-                },
+                onChanged: onChanged,
               ),
             ],
           ),
