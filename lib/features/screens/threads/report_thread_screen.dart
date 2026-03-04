@@ -57,12 +57,13 @@ class _ReportThreadScreenState extends State<ReportThreadScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: Sizes.sm),
+                    const SizedBox(height: Sizes.spaceBtwItems),
                     Text(
                       "Please select a reason for reporting this thread to our moderation team.",
-                      style: Theme.of(context).textTheme.titleSmall,
+                      style: Theme.of(context).textTheme.bodySmall,
+                      textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: Sizes.spaceBtwItems),
+                    const SizedBox(height: Sizes.spaceBtwSections),
 
                     // RADIO OPTIONS
                     ...reasons.map(

@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/custom_navbar.dart';
-import 'features/screens/auth/auth_screen.dart';
 import 'features/screens/favorite/favorites_screen.dart';
 import 'features/screens/home/home_screen.dart';
+import 'features/screens/profile/profile_screen.dart';
 import 'features/screens/threads/threads_screen.dart';
 import 'utils/theme/theme.dart';
 
@@ -19,7 +19,7 @@ class App extends ConsumerWidget {
       const HomeScreen(),
       const FavoritesScreen(),
       const ThreadsScreen(),
-      const AuthScreen(),
+      const ProfileScreen(),
     ];
 
     return MaterialApp(
