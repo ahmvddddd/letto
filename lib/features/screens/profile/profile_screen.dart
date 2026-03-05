@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/containers/custom_appbar.dart';
+import 'widgets/profile_details.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -23,17 +24,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             children: [
               const SizedBox(height: Sizes.spaceBtwSections,),
-          
-              CircleAvatar(
-                radius: 40,
-                child: Center(
-                  child: Icon(Icons.person, color: Colors.grey, size: 50,),
-                ),
-              ),
 
-              const SizedBox(height: Sizes.xs,),
-              Text('johndoe@email.com',
-              style: Theme.of(context).textTheme.labelMedium,),
+              ProfileDetails(
+                authenticated: false,
+                profileImage: '',
+                name: 'John Doe',
+                email: 'johndoe@email.com',
+                userType: 'Agent',
+              ),
           
               const SizedBox(height: Sizes.spaceBtwItems,),
               Align(
