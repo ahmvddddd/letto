@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../custom_widgets/containers/custom_appbar.dart';
+import 'widgets/history_list.dart';
 import 'widgets/profile_details.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -38,7 +39,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 alignment: Alignment.centerLeft,
                 child: Text('History',
                 style: Theme.of(context).textTheme.bodySmall,),
-              )
+              ),
+
+              HistoryList()
             ],
           ),
         ),
