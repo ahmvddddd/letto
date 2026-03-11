@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/custom_colors.dart';
 import '../../../../utils/constants/custom_sizes.dart';
+import '../../../../utils/helper/helper_functions.dart';
 import '../../../custom_widgets/containers/custom_container.dart';
 
 class RecentCard extends StatelessWidget {
@@ -9,9 +10,12 @@ class RecentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
+
     return CustomContainer(
-      padding: Sizes.sm,
-      backgroundColor: Colors.transparent,
+      padding: Sizes.md,
+      borderColor: Colors.transparent,
+      backgroundColor: dark ? CustomColors.dark : CustomColors.light,
       showBorder: true,
       child: Row(
         children: [
