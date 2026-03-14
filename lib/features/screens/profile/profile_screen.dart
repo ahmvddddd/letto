@@ -27,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: Sizes.spaceBtwSections,),
 
               ProfileDetails(
-                authenticated: false,
+                authenticated: true,
                 profileImage: '',
                 name: 'John Doe',
                 email: 'johndoe@email.com',

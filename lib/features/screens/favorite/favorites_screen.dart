@@ -15,12 +15,6 @@ class FavoritesScreen extends StatelessWidget {
           "Favorites",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications_outlined),
-          ),
-        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
