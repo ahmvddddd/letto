@@ -6,6 +6,7 @@ class ListingModel {
   final String? areaName;
   final String? state;
   final DateTime? createdAt;
+  final String? coverImage;
 
   ListingModel({
     required this.id,
@@ -15,6 +16,7 @@ class ListingModel {
     this.areaName,
     this.state,
     this.createdAt,
+    this.coverImage,
   });
 
   factory ListingModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class ListingModel {
       bathrooms: json['bathrooms'],
       areaName: json['area_name'],
       state: json['state'],
+      coverImage: json['cover_image'],
       createdAt: json['created_at'] != null
           ? DateTime.parse(json['created_at'])
           : null,
@@ -39,6 +42,7 @@ class ListingModel {
       'bathrooms': bathrooms,
       'area_name': areaName,
       'state': state,
+      'cover_image': coverImage,
       'created_at': createdAt?.toIso8601String(),
     };
   }
