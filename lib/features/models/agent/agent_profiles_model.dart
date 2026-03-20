@@ -18,14 +18,14 @@ class AgentProfilesModel {
   });
 
   factory AgentProfilesModel.fromJson(Map<String, dynamic> json) {
-    return AgentProfilesModel(
-      id: json['id'] ?? '',
-      profileId: json['profile_id'] ?? '',
-      displayName: json['display_name'] ?? '',
-      verified: json['verified'] ?? '',
-      trustScore: json['trust_score'] ?? '',
-      areasOfOperation: json['areas_of_operation'] ?? '',
-      displayImage:  json['display_image'] ?? '',
-    );
-  }
+  return AgentProfilesModel(
+    id: json['id'] ?? '',
+    profileId: json['profile_id'] ?? '',
+    displayName: json['display_name'] ?? '',
+    verified: json['verified'] ?? false,
+    trustScore: json['trust_score'] ?? 0,
+    areasOfOperation: List<String>.from(json['areas_of_operation'] ?? []), // Cast to List
+    displayImage: json['display_image'] ?? '',
+  );
+}
 }
