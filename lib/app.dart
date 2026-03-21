@@ -40,7 +40,6 @@ class App extends ConsumerWidget {
             ),
             ]),
         ),
-        // bottomNavigationBar: const CustomBottomNavBar(),
       ),
     );
   }
