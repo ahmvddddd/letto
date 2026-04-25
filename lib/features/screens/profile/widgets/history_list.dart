@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../utils/constants/custom_sizes.dart';
 import '../../../custom_widgets/layout/custom_list_view.dart';
+import '../../apartment/listing_details_screen.dart';
 import 'recent_card.dart';
 
 class HistoryList extends StatelessWidget {
@@ -24,7 +25,19 @@ class HistoryList extends StatelessWidget {
           seperatorBuilder: (context, index) =>
               const SizedBox(height: Sizes.sm),
           itemBuilder: (context, index) {
-            return RecentCard();
+            return InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ListingDetailsScreen();
+                    },
+                  ),
+                );
+              },
+              child: RecentCard(),
+            );
           },
         ),
       ],
