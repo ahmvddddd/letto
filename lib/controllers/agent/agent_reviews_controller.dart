@@ -70,3 +70,51 @@ class AgentReviewsController extends StateNotifier<AgentReviewsState> {
     state = state.copyWith(error: null);
   }
 }
+
+
+
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// // Import your state and model files here
+
+// final agentReviewsProvider = 
+//     StateNotifierProvider<AgentReviewsController, AgentReviewsState>((ref) {
+//   final service = ref.read(agentReviewsServiceProvider);
+//   return AgentReviewsController(service);
+// });
+
+// class AgentReviewsController extends StateNotifier<AgentReviewsState> {
+//   final AgentReviewsService _service;
+
+//   AgentReviewsController(this._service) : super(const AgentReviewsState()) {
+//     // Optionally fetch reviews on initialization
+//     fetchReviews();
+//   }
+
+//   Future<void> fetchReviews() async {
+//     // 1. Set loading state
+//     state = state.copyWith(isLoading: true, error: null);
+
+//     try {
+//       // 2. Fetch data from service
+//       final reviews = await _service.getReviews();
+      
+//       // 3. Update state with data
+//       state = state.copyWith(
+//         isLoading: false,
+//         reviews: reviews,
+//       );
+//     } on DioException catch (e) {
+//       // 4. Handle Dio-specific errors
+//       state = state.copyWith(
+//         isLoading: false,
+//         error: e.message ?? "An unexpected network error occurred",
+//       );
+//     } catch (e) {
+//       // 5. Handle generic errors
+//       state = state.copyWith(
+//         isLoading: false,
+//         error: e.toString(),
+//       );
+//     }
+//   }
+// }
